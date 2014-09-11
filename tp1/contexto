@@ -1,0 +1,18 @@
+Taxistas
+	- reciben viajes posibles por la radio
+	- pueden elegir tomarlos o no
+	- el pedido de viaje se establece cuando un taxi toma el pedido recibido por radio INFORMANDO UN TIEMPO ESTIMADO DE LLEGADA A DESTINO
+	PROBLEMAS:
+		* TAXIS QUE NO LLEGAN A DESTINO DENTRO DEL TIEMPO ESPECIFICADO AL MOMENTO DE(EL TAXISTA) ACEPTAR EL VIAJE
+		* CLIENTES QUE CANCELAN LOS VIAJES ANTES DEL TIEMPO ESPECIFICADO DE LLEGADA A DESTINO DEL TAXI
+
+	CONSIDERACIONES DE USUARIOS A TENER EN CUENTA:
+		CLIENTES:
+			- Cuando se esta por vencer el timeout de que llegue el taxista a destino, se deberia poder trackear el taxi por gps o al menos saber si esta llegando o esta lejos asi los clientes pueden decidir si cancelar el viaje o no, podria ser una especie de mensaje "su taxi va a tardar X minutos mas, desea esperarlo o cancelar?"
+			- Dar a los clientes la posibilidad de dar reviews de los taxistas(por IDTaxista) y (posiblemente algun sistema de puntajes y una vista web de esto).
+			- Los clientes quieren poder elegir el modelo de auto que van a solicitar entre los disponibles en ese momento
+			- Los clientes quieren que el viaje sea seguro (?). Seria turbio un puntaje a los taxistas por honestidad y conflictibilidad pero bueh.
+
+		TAXISTAS:
+			- Se deberian filtrar los avisos de radio a los taxistas dentro de un radio acotado, no tiene sentido que le avisen de un viaje que esta en la boca, si el tachero esta por ciudad universitaria *A MENOS QUE SEA EL TAXISTA MAS CERCANO -> SINO HAY INANICION DE CLIENTES !?*
+			- Reviews de clientes "canceladores de viaje seriales" para los taxistas que los dejan plantados
