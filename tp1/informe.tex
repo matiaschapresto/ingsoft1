@@ -127,7 +127,7 @@ Los perfiles de los taxistas serán cargados manualmente en la aplicación. Tend
 
 \vspace{\baselineskip}
         \begin{center}
-		    \includegraphics[scale=0.60]{contexto.png}
+		    \includegraphics[scale=0.50]{contexto.png}
 		    \\
 		    \vspace{1pt}
 		    \footnotesize\textit{Diagrama de contexto del sistema “TecnoTaxi”.}
@@ -135,73 +135,71 @@ Los perfiles de los taxistas serán cargados manualmente en la aplicación. Tend
     \vspace{\baselineskip}
 \par 
 
-
 \begin{enumerate}
 
-\item Pasajero $\Rightarrow$ TecnoTaxi
+    \item Pasajero $\Rightarrow$ TecnoTaxi
+    \begin{itemize}
+        \item Pasajero se registra en el sistema
+        \item Pasajero solicita taxi a traves de internet
+        \item Pasajero selecciona alguno (o ninguno) de los taxistas disponibles para confirmar el viaje
+        \item Pasajero cancela viaje a traves de internet
+        \item Pasajero otorga puntaje al taxista
+        \item Pasajero solicita tiempo de espera del taxi a traves de internet
+    \end{itemize}
 
-\begin{itemize}
+    \item TecnoTaxi $\Rightarrow$ Pasajero
+    \begin{itemize}
+        \item Sistema ofrece listado de taxis disponibles para satisfacer solicitud de viaje
+        \item Sistema informa el tiempo de espera del taxi 
+        \item Sisema informa de cancelacion del viaje por parte del taxista
+    \end{itemize}
 
-\item Pasajero se registra en el sistema
-\item Pasajero solicita taxi a traves de internet
-\item Pasajero selecciona alguno (o ninguno) de los taxistas disponibles para confirmar el viaje
-\item Pasajero cancela viaje a traves de internet
-\item Pasajero otorga puntaje al taxista
-\item Pasajero solicita tiempo de espera del taxi a traves de internet
+    \item Operadora $\Rightarrow$ TecnoTaxi
+    \begin{itemize}
+        \item Operadora informa de un nuevo viaje solicitado
+        \item Operadora informa de la cancelacion de un viaje
+        \item Operadora solicita tiempo de espera del taxi
+    \end{itemize}
 
-\end{itemize}
+    \item Pasajero $\Rightarrow$ Operadora
+    \begin{itemize}
+         \item Pasajero solicita taxi telef\'onicamente
+         \item Pasajero cancela el pedido telef\'onicamente
+         \item Pasajero solicita tiempo de espera del taxi telef\'onicamente
+    \end{itemize}
 
-\item TecnoTaxi $\Rightarrow$ Pasajero
+    \item Operadora $\Rightarrow$ Pasajero
+    \begin{itemize}
+        \item Operadora informa el tiempo de espera del taxi
+    \end{itemize}
 
-\begin{itemize}
-\item Sistema ofrece listado de taxis disponibles para satisfacer solicitud de viaje
-\item Sistema informa el tiempo de espera del taxi 
-\item Sisema informa de cancelacion del viaje por parte del taxista
-\end{itemize}
+    \item TecnoTaxi $\Rightarrow$ Taxista
+    \begin{itemize}
+        \item Sistema ofrece el viaje al taxista
+        \item Sistema informa de cancelacion de viaje al taxista
+    \end{itemize}
 
-\item Operadora $\Rightarrow$ TecnoTaxi
+    \item Taxista $\Rightarrow$ TecnoTaxi
+    \begin{itemize}
+         \item Taxista acepta viaje ofrecido
+         \item Taxista cancela viaje
+         \item Taxista informa viaje completado
+     \end{itemize}
 
-\begin{itemize}
-\item Operadora informa de un nuevo viaje solicitado
-\item Operadora informa de la cancelacion de un viaje
-\item Operadora solicita tiempo de espera del taxi
-\end{itemize}
+    \item Servidor GPS $\Rightarrow$ TecnoTaxi
+    \begin{itemize}
+        \item GPS notifica cambio de posicion de un taxi
+    \end{itemize}	
 
-\item Pasajero $\Rightarrow$ Operadora
+    \item Directivos $\Rightarrow$ TecnoTaxi
+    \begin{itemize}
+        \item Directivos consultan estadisticas del sistema.
+    \end{itemize} 
 
-\begin{itemize}
- \item Pasajero solicita taxi telef\'onicamente
- \item Pasajero cancela el pedido telef\'onicamente
- \item Pasajero solicita tiempo de espera del taxi telef\'onicamente
-\end{itemize}
-
-\item Operadora $\Rightarrow$ Pasajero
-
-\begin{itemize}
-\item Operadora informa el tiempo de espera del taxi
-\end{itemize}
-
-\item TecnoTaxi $\Rightarrow$ Taxista
-
-\begin{itemize}
-\item Sistema ofrece el viaje al taxista
-\item Sistema informa de cancelacion de viaje al taxista
-\end{itemize}
-
-\item Taxista $\Rightarrow$ TecnoTaxi
-
-\begin{itemize}
- \item Taxista acepta viaje ofrecido
- \item Taxista cancela viaje
- \item Taxista informa viaje completado
- \end{itemize}
-
-\item Servidor GPS $\Rightarrow$ TecnoTaxi
-
-\begin{itemize}
-\item GPS notifica cambio de posicion de un taxi
-\end{itemize}	
-
+    \item Taxi $\Rightarrow$ Servidor GPS
+    \begin{itemize}
+        \item Taxi cambia de posicion y es monitoreado por el Servidor GPS
+    \end{itemize} 
 \end{enumerate}
 
 \end{document}
