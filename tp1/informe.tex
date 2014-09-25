@@ -137,24 +137,20 @@ El sistema provee informacion a un sistema estadistico que permite a los directi
 En esta seccion se presentar\'an dos tipos de diagrama que documentan el sistema desde dos puntos de vista. Si se desea verlos mejor, en la carpeta \textbf{Diagramas} se encuentran los archivos fuente y los graficos fuente de los diagramas.
 
 \subsection{Diagrama de contexto}
-Este diagrama fue partido en varios para mejorar la legibilidad de los mismos dada la cantidad de fenomenos.
-
-\begin{figure}[h!]
-  \centering    
-    \includegraphics[scale=0.40]{diagramas/contexto/contextoAmpliado.png}
-  \caption{Diagrama de contexto 1}
-\end{figure}
-
-\begin{figure}[h!]
-  \centering    
-    \includegraphics[scale=0.33]{diagramas/contexto/contextoAmpliado2.png}
-  \caption{Diagrama de contexto 2}
-\end{figure}
-
+Este diagrama (ver figura \ref{diag:contexto}) describe el universo del problema que estamos resolviendo en términos de fenómenos que vinculan agentes. Un fenómeno está representado en cada flecha. El agente que recibe la flecha es quien monitorea el fenómeno. El agente del cual parte la flecha es quien controla el fenómeno.
+\par
+En el diagrama podemos observar, por ejemplo:
+\begin{itemize}
+ \item Cómo nuestro sistema de TecnoTaxi se comunica con los pasajeros y los taxistas (esto lo hace mediante una interfaz web por internet). 
+ \item La interacción del Operador con TecnoTaxi y con los agentes Pasajero y Taxista para brindar asistencia en caso de contingencia, o bien atendiendo por teléfono a los pasajeros que lo prefieran así.
+ \item La opción del pasajero puede pagar en efectivo (cobra el taxista) o por un sistema de pago electrónico.
+ \item La presencia de un sistema estadístico en el que TecnoTaxi delega la gestión de esa información (simplemente alimenta con los datos de los viajes) y a la cual el resto de los agentes pueden consultar.
+\end{itemize}
 \begin{figure}[h!]
   \centering    
     \includegraphics[scale=0.33]{diagramas/contexto/contextoAmpliado3.png}
-  \caption{Diagrama de contexto 3}
+  \caption{Diagrama de contexto}
+\label{diag:contexto}
 \end{figure}
 
 \subsection{Diagrama de objetivos}
