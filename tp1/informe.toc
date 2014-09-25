@@ -1,0 +1,9 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Descripci\IeC {\'o}n general del sistema}{2}{section.1}
+\contentsline {section}{\numberline {2}Interacci\IeC {\'o}n con el pasajero}{2}{section.2}
+\contentsline {section}{\numberline {3}Interacci\IeC {\'o}n con el taxista}{2}{section.3}
+\contentsline {section}{\numberline {4}Disponibilidad del sistema}{3}{section.4}
+\contentsline {section}{\numberline {5}Diagramas}{3}{section.5}
+\contentsline {subsection}{\numberline {5.1}Diagrama de contexto}{3}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Diagrama de objetivos}{3}{subsection.5.2}
+\contentsline {section}{\numberline {6}Casos de ejemplo}{10}{section.6}

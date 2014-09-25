@@ -62,7 +62,6 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{amsmath}
-\usepackage{pdflscape}
 
 \hypersetup{
     colorlinks,
@@ -98,8 +97,8 @@
 \materia{Ingeniería del Software I}
 \grupo{}
 
-\integrante{Barbeito, Nicolás}{147/10}{nicolasbarbeiton@gmail.com}
-\integrante{Chapresto, Mat\'ias}{201/12}{matiaschapresto@gmail.com}
+\integrante{Barbeito, Nicolás}{LLL/AA}{nicolasbarbeiton@gmail.com}
+\integrante{Chapresto, Matías}{LLL/12}{matiaschapresto@gmail.com}
 \integrante{Garassino, Agustín Javier}{394/12}{ajgarassino@gmail.com}
 \integrante{Sarriés, Ana}{144/02}{anasarries@yahoo.com.ar}
 \integrante{Vileriño, Silvio}{106/12}{svilerino@gmail.com}
@@ -129,65 +128,139 @@ Los perfiles de los taxistas serán cargados manualmente en la aplicación. Tend
 \section{Disponibilidad del sistema}
 Para que el sistema pueda ser utilizado por los usuarios sin acceso a internet (y también como plan de contigencia en caso de la caída del servicio) se proveerá al cliente un servicio teléfonico. A través de este se comunicarán con un operador ubicado en la central de TecnoTaxi, donde tendrá acceso mediante una LAN (Local Area Network) a una interfaz reducida del sistema. El operador podrá realizar las acciones correspondientes al taxista tanto como las del usuario, cargando los viajes concretados manualmente.  Es decir, este operador servirá de nexo entre el sistema informático al que el cliente tendría acceso normalmente, y el usuario final en cuestión. Para los usuarios no familiarizados con la tecnolog\'ia, que no pueden cargar su perfil a la aplicaci\'on, se ofrece un soporte asistido por parte de la operadora, quien los ayuda a elegir en el momento el taxi y taxista que les parezca m\'as conveniente.  Por otra parte, en caso de que el proveedor de internet no esté suministrando el servicio de forma adecuada, se procederá a utilizar el sistema antiguo de comunicación basado en radio con los taxistas.
 
-\section{Diagramas}
-En esta seccion se presentar\'an dos tipos de diagrama que documentan el sistema desde dos puntos de vista. Si se desea verlos mejor, en la carpeta \textbf{Diagramas} se encuentran los archivos fuente y los graficos fuente de los diagramas.
 
-\subsection{Diagrama de contexto}
-Este diagrama fue partido en varios para mejorar la legibilidad de los mismos dada la cantidad de fenomenos.
+\begin{itemize}
 
-\begin{figure}[h!]
-  \centering    
-    \includegraphics[scale=0.40]{diagramas/contexto/contextoAmpliado.png}
-  \caption{Diagrama de contexto 1}
-\end{figure}
+	\item Nuevo Cliente $\Rightarrow$ TecnoTaxi
+	\begin{itemize}
+		\item Nuevo cliente se registra al sistema
+	\end{itemize}
 
-\begin{figure}[h!]
-  \centering    
-    \includegraphics[scale=0.33]{diagramas/contexto/contextoAmpliado2.png}
-  \caption{Diagrama de contexto 2}
-\end{figure}
+    \item Pasajero $\Rightarrow$ TecnoTaxi
+    \begin{itemize}
+        \item Pasajero solicita taxi a traves de internet
+        \item Pasajero cancela viaje a traves de internet
+        \item Pasajero selecciona alguno (o ninguno) de los taxistas disponibles para confirmar el viaje
+        \item Pasajero otorga califica el taxista
+        \item Pasajero consulta la ubicac\'on del taxi pedido a traves de internet
+        \item Pasajero se da de baja del sistema
+    \end{itemize}
 
-\begin{figure}[h!]
-  \centering    
-    \includegraphics[scale=0.33]{diagramas/contexto/contextoAmpliado3.png}
-  \caption{Diagrama de contexto 3}
-\end{figure}
+    \item Pasajero $\Rightarrow$ Operadora
+    \begin{itemize}
+         \item Pasajero solicita taxi telef\'onicamente
+         \item Pasajero cancela el pedido telef\'onicamente
+         \item Pasajero no familiarizado con la tecnolog\'ia elige el taxista y el taxi telef\'onicamente
+         \item Pasajero solicita tiempo de espera del taxi telef\'onicamente
+    \end{itemize}
 
-\subsection{Diagrama de objetivos}
-Este diagrama fue partido en varios para mejorar la legibilidad dada la dimension. El primer diagrama muestra la raiz del arbol de objetivos con los hijos del primer nivel(desde arriba hacia abajo) y luego se muestran las imagenes de cada rama de ese primer nivel por separado.
+   
+    \item Operadora $\Rightarrow$ TecnoTaxi
+    \begin{itemize}
+        \item Operadora informa la posici\'on de un taxi (por radio)
+        \item Operadora informa la posici\'on de un pasajero
+        \item Operadora informa de la solicitud de un viaje
+        \item Operadora informa de la cancelaci\'on de un viaje
+        \item Operadora informa la calificaci\'on de un taxista por un viaje
+        \item Operadora la consulta de posici\'on de un taxi
 
-\begin{figure}[h!]
-  \centering        
-    \includegraphics[scale=0.60]{diagramas/objetivos/objetivosrama1-main.png}
-  \caption{Diagrama de objetivos: Raiz del arbol, rama 1 y ramas primer nivel\textbf{(los hijos de las ramas estan en las siguientes figuras)}}
-\end{figure}
+        \end{itemize}
 
-\begin{figure}[h!]
-  \centering        
-    \includegraphics[scale=0.45]{diagramas/objetivos/objetivosrama2.png}
-  \caption{Diagrama de objetivos: Rama 2}
-\end{figure}
+        \item Taxista $\Rightarrow$ Operadora
+  	 	 \begin{itemize}
+        \item Taxista informa el cobro del viaje efectuado
+        \item Taxista acepta un viaje
+        \item Taxista reporta su posici\'on por radio
+        
+        \end{itemize}
 
-\begin{figure}[h!]
-  \centering        
-    \includegraphics[scale=0.20]{diagramas/objetivos/objetivosrama3.png}
-  \caption{Diagrama de objetivos: Rama 3}
-\end{figure}
+         \item Operadora $\Rightarrow$ Taxista
+       \begin{itemize}
+        \item Operadora le ofrece un viaje a un taxista por radio (Esto no esta en el diagrama de contexto, chequear!!)
+        
+        \end{itemize}
 
-\begin{figure}[h!]
-  \centering        
-    \includegraphics[scale=0.50]{diagramas/objetivos/objetivosrama4.png}
-  \caption{Diagrama de objetivos: Rama 4}
-\end{figure}
 
-\begin{landscape}
-\begin{figure}[h!]
-  \centering        
-    \includegraphics[scale=0.215]{diagramas/objetivos/objetivosrama5.png}
-  \caption{Diagrama de objetivos: Rama 5}
-\end{figure}
-\end{landscape}
+    \item TecnoTaxi $\Rightarrow$ Taxista
+    \begin{itemize}
+        \item Sistema ofrece el viaje al taxista
+        \item Sistema informa de que un viaje ofrecido fue tomado
+        \item Sistema informa de cancelacion de viaje al taxista
+    \end{itemize}
 
-\section{Casos de ejemplo}
+    \item Taxista $\Rightarrow$ TecnoTaxi
+    \begin{itemize}
+         \item Taxista acepta viaje ofrecido
+         \item Taxista reporta el cobro del viaje
+         \item Taxista avisa que el viaje ha finalizado
+         \item Taxista avisa que no est\'a disponible
+         \end{itemize}
+
+         \item Pasajero $\Rightarrow$ Taxista
+    \begin{itemize}
+         \item Pasajero paga el total del viaje en efectivo
+    \end{itemize}
+
+   \item Taxista $\Rightarrow$ Taxi 
+    \begin{itemize}
+         \item Taxista conduce el taxi
+    \end{itemize}
+
+
+    \item Sistema de localizaci\'on $\Rightarrow$ TecnoTaxi
+    \begin{itemize}
+        \item Sistema de localizaci\'on reporta posici\'on de un taxi
+        \item Sistema de localizaci\'on reporta posici\'on de un pasajero
+        
+    \end{itemize}	
+        \item Taxi $\Rightarrow$ Sistema de localizaci\'on
+  		\begin{itemize}
+        \item Taxi cambia de posici\'on y es registrado por el sistema de localizaci\'on
+         \end{itemize}	
+
+    \item Pasajero $\Rightarrow$ Sistema de localizaci\'on
+    \begin{itemize}
+        \item Posici\'on del pasajero es registada por el sistema de localizaci\'on
+        \end{itemize}	
+
+
+    \item TecnoTaxi $\Rightarrow$ Sistema de estad\'isticas
+    
+     \begin{itemize}
+        \item Sistema carga los datos de los viajes realizados
+    \end{itemize}	
+
+    \item Directivo $\Rightarrow$ Sistema de estad\'isticas
+    \begin{itemize}
+        \item Directivos consultan estadisticas del sistema.
+        \item Directivos consultan historial de viajes del sistema.
+        \item Directivos consultan las calificaciones de los taxistas del sistema
+    \end{itemize} 
+
+     \item Pasajero $\Rightarrow$ Sistema de estad\'isticas
+    \begin{itemize}
+         \item Pasajero consulta las calificaciones de los taxistas del sistema
+    \end{itemize}
+
+
+    \item Taxi $\Rightarrow$ Servidor GPS
+    \begin{itemize}
+        \item Taxi cambia de posicion y es monitoreado por el Servidor GPS
+    \end{itemize} 
+
+     \item Pasajero  $\Rightarrow$ Sistema de pago electr\'onico
+    \begin{itemize}
+        \item Pasajero paga el viaje de forma bancarizada
+    \end{itemize} 
+
+
+     \item TecnoTaxi  $\Rightarrow$ Sistema de pago electr\'onico
+    \begin{itemize}
+        \item El sistema consulta los pagos efectuados de forma bancarizada
+    \end{itemize} 
+
+
+
+\end{itemize}
 
 \end{document}
