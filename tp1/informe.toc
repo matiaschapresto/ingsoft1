@@ -1,9 +1,14 @@
 \select@language {spanish}
 \contentsline {section}{\numberline {1}Descripci\IeC {\'o}n general del sistema}{2}{section.1}
-\contentsline {section}{\numberline {2}Interacci\IeC {\'o}n con el pasajero}{2}{section.2}
-\contentsline {section}{\numberline {3}Interacci\IeC {\'o}n con el taxista}{2}{section.3}
-\contentsline {section}{\numberline {4}Disponibilidad del sistema}{3}{section.4}
-\contentsline {section}{\numberline {5}Diagramas}{3}{section.5}
-\contentsline {subsection}{\numberline {5.1}Diagrama de contexto}{3}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Diagrama de objetivos}{3}{subsection.5.2}
-\contentsline {section}{\numberline {6}Casos de ejemplo}{10}{section.6}
+\contentsline {subsection}{\numberline {1.1}Interacci\IeC {\'o}n con el pasajero}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Interacci\IeC {\'o}n con el taxista}{2}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Disponibilidad del sistema}{3}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Estadisticas del sistema y directivos}{3}{subsection.1.4}
+\contentsline {section}{\numberline {2}Diagramas}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Diagrama de contexto}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Diagrama de objetivos}{3}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Rama extra: Diagrama de objetivos: Estadisticas y directivos}{10}{subsubsection.2.2.1}
+\contentsline {section}{\numberline {3}Casos de ejemplo}{10}{section.3}
+\contentsline {subsection}{\numberline {3.1}Caso: Viaje exitoso}{10}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Caso: Sin internet}{10}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Caso: Caida de conexion a internet y solucion de contingencia}{10}{subsection.3.3}

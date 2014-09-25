@@ -1,8 +1,13 @@
 \BOOKMARK [1][-]{section.1}{Descripci\363n general del sistema}{}% 1
-\BOOKMARK [1][-]{section.2}{Interacci\363n con el pasajero}{}% 2
-\BOOKMARK [1][-]{section.3}{Interacci\363n con el taxista}{}% 3
-\BOOKMARK [1][-]{section.4}{Disponibilidad del sistema}{}% 4
-\BOOKMARK [1][-]{section.5}{Diagramas}{}% 5
-\BOOKMARK [2][-]{subsection.5.1}{Diagrama de contexto}{section.5}% 6
-\BOOKMARK [2][-]{subsection.5.2}{Diagrama de objetivos}{section.5}% 7
-\BOOKMARK [1][-]{section.6}{Casos de ejemplo}{}% 8
+\BOOKMARK [2][-]{subsection.1.1}{Interacci\363n con el pasajero}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Interacci\363n con el taxista}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Disponibilidad del sistema}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{Estadisticas del sistema y directivos}{section.1}% 5
+\BOOKMARK [1][-]{section.2}{Diagramas}{}% 6
+\BOOKMARK [2][-]{subsection.2.1}{Diagrama de contexto}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.2}{Diagrama de objetivos}{section.2}% 8
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Rama extra: Diagrama de objetivos: Estadisticas y directivos}{subsection.2.2}% 9
+\BOOKMARK [1][-]{section.3}{Casos de ejemplo}{}% 10
+\BOOKMARK [2][-]{subsection.3.1}{Caso: Viaje exitoso}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.2}{Caso: Sin internet}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.3}{Caso: Caida de conexion a internet y solucion de contingencia}{section.3}% 13
