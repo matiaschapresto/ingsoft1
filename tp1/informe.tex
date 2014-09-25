@@ -126,7 +126,7 @@ En caso de no disponer de acceso a internet, el pasajero podrá llamar a un oper
 Los perfiles de los taxistas serán cargados manualmente en la aplicación. Tendrán un taxi asociado y una puntuación determinada por los usuarios a través de un sistema de votación. Estos serán informados cada vez que haya una solicitud de viaje que el sistema considere relevante al taxista en base a su ubicación actual. El taxista dispondrá de toda la información asociada a sus viajes asignados (destino, ubicación y hora) en todo momento. En caso de que el viaje le sea asignado, una vez que este se concrete deberá marcarlo como finalizado. En caso de no poder recoger a un pasajero por algún motivo, el taxista podrá en todo momento cancelar alguno de sus viajes pendientes, delegando la tarea de informar al usuario al sistema. El taxista tendrá total libertad de seleccionar el camino a realizar para concretar el viaje, utilizando como ayuda si lo desea el GPS que se le suministrará.
 
 \section{Disponibilidad del sistema}
-Para que el sistema pueda ser utilizado por los usuarios sin acceso a internet (y también como plan de contigencia en caso de la caída del servicio) se proveerá al cliente un servicio teléfonico. A través de este se comunicarán con un operador ubicado en la central de TecnoTaxi, donde tendrá acceso mediante una LAN (Local Area Network) a una interfaz reducida del sistema. El operador podrá realizar las acciones correspondientes al taxista tanto como las del usuario, cargando los viajes concretados manualmente. Es decir, este operador servirá de nexo entre el sistema informático al que el cliente tendría acceso normalmente, y el usuario final en cuestión. Por otra parte, en caso de que el proveedor de internet no esté suministrando el servicio de forma adecuada, se procederá a utilizar el sistema antiguo de comunicación basado en radio con los taxistas.
+Para que el sistema pueda ser utilizado por los usuarios sin acceso a internet (y también como plan de contigencia en caso de la caída del servicio) se proveerá al cliente un servicio teléfonico. A través de este se comunicarán con un operador ubicado en la central de TecnoTaxi, donde tendrá acceso mediante una LAN (Local Area Network) a una interfaz reducida del sistema. El operador podrá realizar las acciones correspondientes al taxista tanto como las del usuario, cargando los viajes concretados manualmente.  Es decir, este operador servirá de nexo entre el sistema informático al que el cliente tendría acceso normalmente, y el usuario final en cuestión. Para los usuarios no familiarizados con la tecnolog\'ia, que no pueden cargar su perfil a la aplicaci\'on, se ofrece un soporte asistido por parte de la operadora, quien los ayuda a elegir en el momento el taxi y taxista que les parezca m\'as conveniente.  Por otra parte, en caso de que el proveedor de internet no esté suministrando el servicio de forma adecuada, se procederá a utilizar el sistema antiguo de comunicación basado en radio con los taxistas.
 
 
 \begin{itemize}
@@ -150,7 +150,7 @@ Para que el sistema pueda ser utilizado por los usuarios sin acceso a internet (
     \begin{itemize}
          \item Pasajero solicita taxi telef\'onicamente
          \item Pasajero cancela el pedido telef\'onicamente
-         \item Pasajero elige el taxista y el taxi telef\'onicamente
+         \item Pasajero no familiarizado con la tecnolog\'ia elige el taxista y el taxi telef\'onicamente
          \item Pasajero solicita tiempo de espera del taxi telef\'onicamente
     \end{itemize}
 
@@ -192,11 +192,13 @@ Para que el sistema pueda ser utilizado por los usuarios sin acceso a internet (
     \begin{itemize}
          \item Taxista acepta viaje ofrecido
          \item Taxista reporta el cobro del viaje
+         \item Taxista avisa que el viaje ha finalizado
+         \item Taxista avisa que no est\'a disponible
          \end{itemize}
 
          \item Pasajero $\Rightarrow$ Taxista
     \begin{itemize}
-         \item Pasajero paga el total del viaje
+         \item Pasajero paga el total del viaje en efectivo
     \end{itemize}
 
    \item Taxista $\Rightarrow$ Taxi 
@@ -245,6 +247,19 @@ Para que el sistema pueda ser utilizado por los usuarios sin acceso a internet (
     \begin{itemize}
         \item Taxi cambia de posicion y es monitoreado por el Servidor GPS
     \end{itemize} 
+
+     \item Pasajero  $\Rightarrow$ Sistema de pago electr\'onico
+    \begin{itemize}
+        \item Pasajero paga el viaje de forma bancarizada
+    \end{itemize} 
+
+
+     \item TecnoTaxi  $\Rightarrow$ Sistema de pago electr\'onico
+    \begin{itemize}
+        \item El sistema consulta los pagos efectuados de forma bancarizada
+    \end{itemize} 
+
+
 
 \end{itemize}
 
