@@ -1,0 +1,169 @@
+%*******************porque no veo que esté*************************************************************************
+%								COMANDOS ÚTILES PARA LATEX EN ESTE TP							
+%
+%	\ : espacio simple
+%	\\ : nueva l\'inea
+%	\par : va a la l\'inea de abajo y deja sangr\'ia
+%	\vspace{##tamaño en pt##} o \vspace{\baselineskip} en general:
+%								 para dejar un espacio vertical
+%	\textbf{text} :text en negrita
+%	\textit{text} :text en itálica
+%
+% GRAFICOS CENTRADOS:
+%	\begin{center}
+%		\includegraphics[width=\textwidth]{./img/##ruta imagen (no hace falta extension)##}
+%	\end{center}
+%		--> se pueden agregar atributos como scale por si se hace muy grande
+%
+% TABLAS CENTRADAS:
+%	\begin{center}
+%	\begin{tabular}{|c|c|}
+%	\hline
+%	\ \textbf{Programa} & \textbf{Ticks} \\
+%	\hline
+%		ASM & 675127609 \\
+%	\hline
+%	\end{tabular}
+%	\end{center}
+%
+% ALGORITMOS (EN VARIOS LENGUAJES):
+% \begin{lstlisting}
+%	void sumoDiez(int &num)
+%	{
+%	    num += 10;
+%	}
+%	
+%	int main()
+%	{
+% 	   int i;
+%	    int numeroAProcesar = 20;
+%	    for (i = 0; i < 50; i++)
+%	    {
+%	        sumoDiez(numeroAProcesar);	//Proceso el numero en cada ciclo
+%	    } 
+%	    return 0;
+%	}
+%	\end{lstlisting}
+%
+% para info sobre todo lo que tiene el package detallado:
+% http://en.wikibooks.org/wiki/LaTeX/Source\_Code\_Listings
+%
+%********************************************************************************************
+
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc} % para poder usar tildes en archivos UTF-8
+\usepackage[spanish]{babel} % para que comandos como \today den el resultado en castellano
+\usepackage{a4wide} % márgenes un poco más anchos que lo usual
+\usepackage[conEntregas]{caratula}
+\usepackage{amssymb}
+\usepackage{fancybox}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{pdflscape}
+\usepackage{listings}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\lstset{escapechar=@,style=customc}
+
+\begin{document}
+
+\titulo{Trabajo Práctico 1}
+\subtitulo{Análisis preliminar del sistema de software “TecnoTaxi”}
+
+\fecha{\today}
+
+\materia{Ingenier\'ia del Software I}
+\grupo{}
+
+\integrante{Barbeito, Nicolás}{147/10}{nicolasbarbeiton@gmail.com}
+\integrante{Chapresto, Mat\'ias}{201/12}{matiaschapresto@gmail.com}
+\integrante{Garassino, Agust\'in Javier}{394/12}{ajgarassino@gmail.com}
+\integrante{Sarriés, Ana}{144/02}{anasarries@yahoo.com.ar}
+\integrante{Vileriño, Silvio}{106/12}{svilerino@gmail.com}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Descripción general del sistema}
+TecnoTaxi es un sistema para facilitar la coordinación de los viajes entre los pasajeros y los taxistas.
+
+\section{Pasajeros}
+\subsection{Interfaz con el usuario}
+El usuario podrá utilizar el sistema a través de dos interfaces distinguidas. La primera es de forma directa con TecnoTaxi, utilizando un dispositivo con acceso a internet. La segunda será a través de una operadora que servirá de nexo entre el usuario y el sistema.
+
+\subsection{Utilización del sistema a través de internet}
+Antes de tener acceso al sistema, es necesario registrarse. El usuario deberá completar nombre, apellido, y deberá señalar al menos un teléfono o e-mail para poder contactarlo e identificarlo unívocamente. El usuario deberá además indicar una contraseña para restringir el acceso a su cuenta. Una vez registrado tendrá acceso al sistema, donde podrá solicitar viajes ingresando una dirección de partida, dirección de destino y horario. El sistema responderá con un listado de taxis disponibles para la realización del viaje, luego el usuario procederá a seleccionar uno de estos y será notificado cuando le sea asignado un taxista para concretar su viaje (que podría no llegar a ser el seleccionado, a pesar de que el sistema priorice a este). El usuario podrá cancelar el viaje a través del sistema en cualquier momento. Una vez finalizado el viaje, el usuario podrá puntuar al taxista con el que lo realizó. El listado de taxista tendrá además información específica del perfil del taxista, como su puntuación y el vehículo que utiliza.
+
+\subsection{Utilización del sistema a través de la operadora}
+El usuario podrá comunicarse telefónicamente con una operadora con acceso al sistema vía red local. Esto sirve como plan de contingencia en caso de que la conexión a internet este caída, y también sirve de utilidad para aquellos usuarios que no poseen conectividad a internet, o simplemente desean pedir un taxi por este medio. Todas las funcionalidades disponibles al usuario a través del sistema podrán realizarse también telefónicamente, la operadora humana lo guiará en todo el proceso, creandole un usuario si este no dispone de uno, o pidiéndole primero sus datos personales para tener acceso a la cuenta del mismo. La operadora podrá acceder sin restricción de contraseña a cualquier cuenta de usuario.
+
+\subsection{Interfaz con el usuario a través de internet}
+La web tendrá una página principal, donde el usuario podrá acceder o registrase al sistema ingresando sus datos. Una vez en el sistema, tendrá un menú de viajes donde podrá realizar las siguientes operaciones:
+\begin{enumerate}
+\item Agregar un nuevo viaje indicando punto de partida, destino y horario.
+\item Cancelar un viaje pendiente.
+\item Calificar un viaje finalizado si no fue calificado previamente.
+\item Crear reserva periódica de viajes.
+\end{enumerate}
+En el primer caso, en la misma pantalla se desplegará un menú con los taxistas recomendados por el sistema al usuario. Los taxistas que se mostrarán serán filtrados por puntuación general, puntuación personalizada, distancia, disponibilidad para la realización del viaje. Una vez seleccionado el taxista, TecnoTaxi tratará de asignarle a este el viaje, en caso fallido asignará otro de los taxistas por orden de prioridad según los criterios que se consideren relevantes (como la puntuación y la distancia). Una vez asignado el taxista, el viaje pasará a estar en estado pendiente.
+El usuario podrá cancelar cualquier viaje que se encuentre en estado pendiente. También una vez que se haya finalizado el viaje, podrá puntuar al taxista con el que lo realizó.
+Como indica el punto 4, el usuario también podrá programar viajes periódicamente estableciendo un patrón y la frecuencia con la que se quiere que este se repita. De la misma manera, podrá seleccionar un taxista preferido para la reserva, pero eso no es garantía de que el seleccionado sea el encargado de realizar el viaje. El usuario podrá abonar este servicio a través de un sistema de débito automático, o de la manera tradicional al finalizar cada uno de los viajes.
+
+\section{Taxistas}
+\subsection{Utilización del sistema por parte de los taxistas}
+Todos los choferes de la empresa de RadioTaxi tendrán una cuenta con un perfil asociado en el sistema TecnoTaxi. Esta cuenta será de utilidad para asociar a este información como nombre, apellido, vehículo, puntuación y otros datos de interes para los potenciales pasajeros. Los taxistas tendrán una computadora con pantalla táctil integrada a sus vehículos, la misma estará asociada a su cuenta en TecnoTaxi. Esta se comunicará con el sistema utilizando tecnología de internet 3G. Además cada uno de los taxis tendrá un sistema de posicionamiento global (GPS), embebido que será de utilidad para saber la ubicación de los mismos. A través de esta los taxistas serán notificados cuando les es asignado un viaje, indicándoles la información relevante al viaje (horario, partida, destino). Poseerán un menú con el listado de viajes donde podrán realizar las siguientes acciones:
+\begin{enumerate}
+\item Marcar un viaje pendiente como en progreso.
+\item Marcar un viaje en progreso como finalizado.
+\item Marcar un viaje no finalizado como cancelado.
+\item Marcarse como no disponible.
+\end{enumerate}
+La primera de estas acciones se realizará cuando el taxista retire a un pasajero por un lugar, iniciando así el viaje. La segunda se dará cuando el viaje termine, una vez que clickee en finalizar se le indicará el costo del viaje para poder cobrar así al pasajero el monto correspondiente. El costo del mismo será calculado de la manera tradicional, en base a la distancia y el tiempo de duración del viaje. Un viaje no finalizado (asignado al taxista) podrá cancelarse en cualquier momento, por ejemplo si no pudo pasar a retirar al pasajero o si no podrá hacerlo. El último item consiste en una opción que tiene el taxista para marcarse como no disponible, esto puede ser de utilidad si el vehículo posee un desperfecto ténico y es necesario repararlo antes de poder continuar trabajando.
+
+\subsection{Utilización del sistema por parte de los taxistas a través de radio}
+En caso de que la computadora integrada en el taxi no pueda comunicarse con TecnoTaxi, el taxista será notificado y deberá comunicarse con la operadora a través de la radio para notificar de este suceso. De ese momento en adelante, el taxista deberá informar a la operadora cada vez que realiza una de las acciones determinadas en el punto anterior, y a su vez la operadora deberá informar al taxista de los viajes que debe realizar. La operadora se encargará de introducir manualmente estos datos en TecnoTaxi, utilizando la cuenta del taxista que se haya sin conexión, hasta que el servicio se normalize.
+
+\section{Otros aspectos del sistema}
+En caso de que se cancele un viaje, esto figurará en el menú de viajes del pasajero. Si el sistema puede, asignará automáticamente otro taxista, en caso contrario se enviará un mail o se llamará por teléfono automáticamente al usuario indicándole lo sucecido a través de una grabación.
+
+El taxista será libre de tomar el curso que quiera a la hora de realizar un viaje, por ejemplo, para evitar tráfico durante el mismo. De todas maneras se proveerá de un costo estimado al usuario una vez que seleccione el viaje, utilizando la información asociada a este.
+
+El sistema TecnoTaxi guardará toda la información relevante a puntuaciones, cancelaciones, viajes finalizados, costo de viajes, porcentaje de disponibilidad de taxistas en un momento dado, etc. Todas estos datos serán presentados en forma de estadísticas a través de un sistema, restringido por contraseña, para los gerentes de la empresa de radio taxi. 
+
+\section{Casos de ejemplo}
+\subsection{Caso: Viaje exitoso}
+El pasajero desea viajar del punto A al punto B en auto. Para ello quiere contratar los servicios de TecnoTaxi, el primer paso que realiza es ingresar a su perfil via internet(o comunicarse con la operadora en caso de no estar familiarizado con la tecnologia) y solicitar un movil al sistema(o por medio de la operadora de ser necesario). El sistema computa una lista de taxistas disponibles y con caracteristicas deseadas por el pasajero, y se las presenta al pasajero, al este elegir un taxista, el sistema le comunica al taxista el nuevo viaje, en caso de que el taxista acepte, el pasajero es notificado que el movil esta en camino. El usuario puede verificar en el sistema(por medio de operadora o el sistema) el tiempo estimado de espera o cancelar el viaje. Cuando el taxista arriba y se realiza el viaje desde A hasta B, el taxista pide la cantidad adecuada de dinero y el pasajero entrega dicha cantidad(ver diagrama de objetivos para esta operacion). Al finalizar, el pasajero otorga una puntuacion al taxista y finaliza el servicio contratado por TecnoTaxi para este viaje.
+
+\subsection{Caso: Sin internet}
+Un usuario desea pedir un taxi para realizar un viaje, pero no posee ningún dispositivo con acceso a internet. Este se comunica telefónicamente con la operadora de RadioTaxi indicandole origen, destino y horario en el que desea el taxi. La operadora posee acceso directo a través de una red local al sistema, a través de una interfaz reducida carga manualmente los datos para el viaje y el sistema se encarga de asignarle el viaje a un taxista notificando al mismo. Una vez asignado el viaje, se comunica a la operadora el taxista encargado y esta a su vez comunica al cliente. En caso de no poseer ningún taxi disponible el sistema lo indicará y la operadora informará al cliente de la misma manera. Una vez que el taxista retire al pasajero, el resto del viaje continua con su curso normal.
+
+\subsection{Caso: Caida de conexión a internet y solución de contingencia}
+Durante un viaje el taxista deja de tener acceso a internet. La interfaz que este posee dentro de su veh\'iculo lo notifica y la comunicación durante este per\'iodo será exclusivamente a través de la radio con la operadora, indicando cuando concrete sus viajes y siendo notificado cuando le es asignado un viaje. La operadora se encargará de mantener la consistencia en el sistema cargando manualmente lo que cargar\'ia durante el transcurso de un viaje normal el taxista, es decir la finalización de los viajes, las transacciones de dinero, la cancelación de un viaje por no disponibilidad, etc.
+
+\end{document}

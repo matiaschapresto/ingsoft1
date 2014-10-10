@@ -1,0 +1,199 @@
+{
+  "tag":"main_branch",
+  "texto":"Mejorar sistema actual",
+  "tipo":"od",
+  "y-ref":[
+    {
+      "texto":"Mejorar experiencia del pasajero",
+      "tipo":"od",
+      "y-ref":[
+        {
+          "texto":"Mejorar proceso de solicitud de viaje",
+          "tipo":"od",
+          "o-ref":[
+            {
+              "ayuda":[
+                "Automatización"
+              ],
+              "dificulta":[
+                "Simpleza del sistema"
+              ],
+              "texto":"Usuario puede realizar solicitud de manera automática a través de la web",
+              "tipo":"od",
+              "y-ref":[
+                {
+                  "texto":"Usuario dispone de internet",
+                  "tipo":"ad"
+                },
+                {
+                  "texto":"Usuario se puede registrar en el sistema",
+                  "tipo":"od",
+                  "y-ref":[
+                    {
+                      "texto":"TecnoTaxi",
+                      "tipo":"ag"
+                    }
+                  ]
+                },
+                {
+                  "texto":"Ofrecer a usuario listado de taxis disponibles",
+                  "tipo":"od",
+                  "o-ref":[
+                    {
+                      "texto":"Ofrecer en base a características geográficas y puntuación de los taxistas disponibles",
+                      "dificulta":[
+                        "Simpleza del sistema"
+                      ],
+                      "ayuda":[
+                        "Experiencia del usuario"
+                      ],
+                      "tipo":"od",
+                      "y-ref":[
+                        {
+                          "texto":"Poseer información sobre la ubicación de los taxis",
+                          "tipo":"od",
+                          "yref":[
+                            {
+                              "texto":"GPS",
+                              "tipo":"ag"
+                            }
+                          ]
+                        },
+                        {
+                          "texto":"Poseer información sobre la puntuación de los taxis",
+                          "tipo":"od",
+                          "yref":[
+                            {
+                              "texto":"Usuarios pueden votar cuando al taxista cuando viaje finaliza",
+                              "tipo":"od",
+                              "yref":[
+                                {
+                                  "texto":"TecnoTaxi",
+                                  "tipo":"ag"
+                                }
+                              ]
+                            },
+                            {
+                              "texto":"Sistema almacena estadísticas sobre las puntuaciones para ofrecerlas",
+                              "tipo":"od",
+                              "yref":[
+                                {
+                                  "texto":"TecnoTaxi",
+                                  "tipo":"ag"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "texto":"Ofrecer listado de taxis disponibles",
+                      "dificulta":[
+                        "Experiencia del usuario"
+                      ],
+                      "ayuda":[
+                        "Simpleza del sistema"
+                      ],
+                      "tipo":"ag"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "ayuda":[
+                "Simpleza del sistema"
+              ],
+              "dificulta":[
+                "Automatización"
+              ],
+              "texto":"Usuario puede realizar solicitud a través de una operadora",
+              "tipo":"od",
+              "y-ref":[
+                {
+                  "texto":"Disponibilidad del sistema a través de una interfaz local para que lo utilice la operadora",
+                  "tipo":"od",
+                  "y-ref":[
+                    {
+                      "texto":"TecnoTaxi",
+                      "tipo":"ag"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "texto":"Mejorar proceso de cancelación de viaje",
+          "tipo":"ag",
+          "o-ref":[
+            {
+              "ayuda":[
+                "Automatización"
+              ],
+              "dificulta":[
+                "Simpleza del sistema"
+              ],
+              "texto":"Cancelar a través de la web",
+              "tipo":"od",
+              "y-ref":[
+                {
+                  "tipo":"ag",
+                  "texto":"TecnoTaxi"
+                }
+              ]
+            },
+            {
+              "ayuda":[
+                "Simpleza del sistema"
+              ],
+              "dificulta":[
+                "Automatización"
+              ],
+              "texto":"Cancelar a través de la operadora",
+              "tipo":"od",
+              "y-ref":[
+                {
+                  "texto":"Disponibilidad del sistema a través de una interfaz local para que lo utilice la operadora",
+                  "tipo":"od",
+                  "y-ref":[
+                    {
+                      "texto":"TecnoTaxi",
+                      "tipo":"ag"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "texto":"Mejorar experiencia del taxista",
+      "tipo":"od",
+      "y-ref":[
+        {
+          "texto":"Mejorar proceso de asignación de viajes",
+          "tipo":"ag"
+        },
+        {
+          "texto":"Mejorar proceso de cancelación de viaje",
+          "tipo":"ag"
+        }
+      ]
+    },
+    {
+      "texto":"Mejorar experiencia de los gerentes",
+      "tipo":"od",
+      "y-ref":[
+        {
+          "texto":"Incrementar información estadística útil disponible",
+          "tipo":"ag"
+        }
+      ]
+    }
+  ]
+}
