@@ -29,3 +29,88 @@
   \ucstep{Puede ser extendido por \texttt{CU Reservando un viaje} y \texttt{CU Solicitando viaje}}{}
   \ucstep{Fin caso de uso}{}
 \end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Reportando ubicacion del taxi}
+  \ucpre{True}
+  \ucpost{El sistema conoce la ubicacion del taxi}
+  \ucactor{Sistema de localizacion GPS}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El Sistema de localizacion GPS reporta la ubicacion del taxi al sistema.}{}
+  \ucstep{Fin caso de uso}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Rechazando un viaje}
+  \ucpre{El sistema le ofrecio el viaje al taxista}
+  \ucpost{El viaje no es asignado a este taxista}
+  \ucactor{Taxista}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El sistema le ofrece un viaje a un taxista.}{}
+  \ucstep{El taxista rechaza el viaje.}{}
+  \ucstep{Fin caso de uso}{}
+\end{usecasesteps}
+
+
+\begin{usecase}
+  \ucname{Cambiando estado de un viaje(Ver FSM Ciclo de vida Viaje)}
+  \ucpre{El viaje pertenece al taxista y no esta en estado finalizado}
+  \ucpost{El estado del viaje es cambiado}
+  \ucactor{Taxista}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El taxista indica un nuevo estado para el viaje.}{}
+  \ucstep{El sistema realiza este cambio.}{}
+  \ucstep{Fin caso de uso}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Efectuando Pago}
+  \ucpre{El pago no fue realizado por debito automatico $\land$ El viaje esta en estado finalizado}
+  \ucpost{}
+  \ucactor{Taxista, Pasajero}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El taxista indica al pasajero el monto a pagar.}{}
+  \ucstep{El pasajero paga.}{}
+  \ucstep{Si el pago no es exacto, el taxista devuelve vuelto.}{}
+  \ucstep{El taxista asenta en el sistema el pago.}{}
+  \ucstep{Fin caso de uso}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Reportando Posicion}
+  \ucpre{No hay internet(sino de utiliza el sistema de localizacion GPS)}
+  \ucpost{La Operadora conoce la posicion del taxista}
+  \ucactor{Taxista}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El taxista indica a la operadora su posicion.}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Consultando estadisticas}
+  \ucpre{True}
+  \ucpost{True}
+  \ucactor{Directivo}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El Directivo solicita las estadisticas al sistema.}{}
+  \ucstep{El sistema muestra en la pantalla las estadisticas solicitadas}{}
+  \ucstep{Fin caso de uso}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Debitando Cuenta}
+  \ucpre{True}
+  \ucpost{La cuenta es debitada correctamente.}
+  \ucactor{Sistema de Pago Electronico(SPE)}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El sistema provee al SPE los datos de la cuenta.}{}
+  \ucstep{El SPE debita el monto adecuado de la cuenta.}{}
+  \ucstep{Fin caso de uso}{}
+\end{usecasesteps}
