@@ -1,1 +1,27 @@
 \subsection{Modelo Conceptual}
+\subsubsection{Diagrama de clases}
+\diagramav{Modelo-Conceptual}
+\subsubsection{Restricciones al modelo con OCL}
+\begin{itemize}
+	\item \begin{ocl}{Puntaje del taxista entre 0 y 10}
+		  context Taxista
+		  inv: self.puntajePromedio >=0 and
+		       self.puntajePromedio <=10
+		\end{ocl}
+	
+	\item \begin{ocl}{Puntaje del viaje entre 0 y 10}
+		  context Viaje
+		  inv: self.puntaje >=0 and
+		       self.puntaje <=10
+		\end{ocl}
+
+	\item \begin{ocl}{No puede haber 2 viajes con el mismo taxista en el mismo momento}
+		  context ...
+		  inv: ...
+		\end{ocl}
+
+	\item \begin{ocl}{Puntaje promedio de un taxista es el promedio de los puntajes de todos sus viajes}
+		  context ...
+		  inv: ...
+		\end{ocl}
+\end{itemize}
