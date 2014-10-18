@@ -1,0 +1,18 @@
+\subsection{Casos de Uso}
+
+%\diagramav{../diagramas/diag-cu.pdf}
+
+\begin{usecase}
+  \ucname{Consultando monto a pagar de un DNI}
+  \ucpre{True}
+  \ucpost{El sistema muestra las multas pendientes por pagar de un determinado DNI}
+  \ucactor{Personal de la estación}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El personal de la estación ingresa el DNI del usuario a consultar las multas.}{}
+  \ucstep{El sistema verifica que el DNI ingresado corresponda a un usuario.}{}
+  \ucstep{Si existen multas por abonar, el sistema muestra que tipo de multas y el importe total. Si no existen multas, el sistema muestra que está libre de deudas.}
+         {\ucalt{Si el DNI ingresado es incorrecto, mostrar mensaje de DNI equivocado y volver a 1.}}
+  \ucstep{Si el personal de la estación desea registrar el pago de las multas, hace click en el botón “Pagar”. Es extendido por {\bf CU 7}.}{}
+  \ucstep{Fin caso de uso}{}
+\end{usecasesteps}
