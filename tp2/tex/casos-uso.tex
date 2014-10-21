@@ -13,7 +13,7 @@
   \ucstep{El sistema verifica que los datos sean validos y almacena al nuevo usuario.}
         {\ucalt{Si los datos son invalidos, el mostrar el mensaje de error correspondiente y volver a 1.}}
   \ucstep{Puede ser extendido por \texttt{CU Logueandose en el sistema}}{}
-  \ucstep{Fin caso de uso}{}
+  \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
 
 \begin{usecase}
@@ -27,7 +27,7 @@
   \ucstep{El sistema verifica que los datos sean validos y otorga el acceso.}
         {\ucalt{Si los datos son invalidos, el mostrar el mensaje de datos incorrectos y volver a 1.}}
   \ucstep{Puede ser extendido por \texttt{CU Reservando un viaje} y \texttt{CU Solicitando viaje}}{}
-  \ucstep{Fin caso de uso}{}
+  \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
 
 \begin{usecase}
@@ -38,7 +38,7 @@
 \end{usecase}
 \begin{usecasesteps}
   \ucstep{El Sistema de localizacion GPS reporta la ubicacion del taxi al sistema.}{}
-  \ucstep{Fin caso de uso}{}
+  \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
 
 \begin{usecase}
@@ -50,7 +50,7 @@
 \begin{usecasesteps}
   \ucstep{El sistema le ofrece un viaje a un taxista.}{}
   \ucstep{El taxista rechaza el viaje.}{}
-  \ucstep{Fin caso de uso}{}
+  \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
 
 
@@ -63,7 +63,7 @@
 \begin{usecasesteps}
   \ucstep{El taxista indica un nuevo estado para el viaje.}{}
   \ucstep{El sistema realiza este cambio.}{}
-  \ucstep{Fin caso de uso}{}
+  \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
 
 \begin{usecase}
@@ -77,17 +77,6 @@
   \ucstep{El pasajero paga.}{}
   \ucstep{Si el pago no es exacto, el taxista devuelve vuelto.}{}
   \ucstep{El taxista asenta en el sistema el pago.}{}
-  \ucstep{Fin caso de uso}{}
-\end{usecasesteps}
-
-\begin{usecase}
-  \ucname{Reportando Posicion}
-  \ucpre{No hay internet(sino de utiliza el sistema de localizacion GPS)}
-  \ucpost{La Operadora conoce la posicion del taxista}
-  \ucactor{Taxista}
-\end{usecase}
-\begin{usecasesteps}
-  \ucstep{El taxista indica a la operadora su posicion.}{}
   \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
 
@@ -100,7 +89,7 @@
 \begin{usecasesteps}
   \ucstep{El Directivo solicita las estadisticas al sistema.}{}
   \ucstep{El sistema muestra en la pantalla las estadisticas solicitadas}{}
-  \ucstep{Fin caso de uso}{}
+  \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
 
 \begin{usecase}
@@ -112,5 +101,82 @@
 \begin{usecasesteps}
   \ucstep{El sistema provee al SPE los datos de la cuenta.}{}
   \ucstep{El SPE debita el monto adecuado de la cuenta.}{}
-  \ucstep{Fin caso de uso}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Solicitando un viaje}
+  \ucpre{True}
+  \ucpost{Queda un nuevo viaje pendiente}
+  \ucactor{Pasajero}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Reservando un viaje}
+  \ucpre{True}
+  \ucpost{Queda una nueva reserva}
+  \ucactor{Pasajero}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Eligiendo un taxista}
+  \ucpre{True}
+  \ucpost{}
+  \ucactor{Pasajero}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Cancelando viaje}
+  \ucpre{True}
+  \ucpost{}
+  \ucactor{Pasajero}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Puntuando un taxista}
+  \ucpre{True}
+  \ucpost{}
+  \ucactor{Pasajero}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Consultando tiempo de espera}
+  \ucpre{True}
+  \ucpost{}
+  \ucactor{Pasajero}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Consultando calificaciones de un taxista}
+  \ucpre{True}
+  \ucpost{}
+  \ucactor{Pasajero}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{}{}
+  \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}

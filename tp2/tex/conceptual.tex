@@ -1,27 +1,58 @@
 \subsection{Modelo Conceptual}
 \subsubsection{Diagrama de clases}
 \diagramav{Modelo-Conceptual}
-\subsubsection{Restricciones al modelo con OCL}
+\subsubsection{Aclaraciones}
 \begin{itemize}
-	\item \begin{ocl}{Puntaje del taxista entre 0 y 10}
+	\item La herencia es siempre disjunta y completa.
+	\item La clase \texttt{Persona} fue agregada con el objetivo de unificar los atributos de diferentes subclases de \texttt{Persona}.
+	\item \textbf{Notar que las herencias pueden ser varios conectivos de herencia. ie. Ver clase Persona, de la cual heredan Empleado y Pasajero.}
+\end{itemize}
+\subsubsection{Restricciones al modelo con OCL}
+\begin{enumerate}
+	\item \begin{ocl}{Puntaje del taxista entre 0 y 10.}
 		  context Taxista
 		  inv: self.puntajePromedio >=0 and
 		       self.puntajePromedio <=10
 		\end{ocl}
 	
-	\item \begin{ocl}{Puntaje del viaje entre 0 y 10}
+	\item \begin{ocl}{Puntaje del viaje entre 0 y 10.}
 		  context Viaje
 		  inv: self.puntaje >=0 and
 		       self.puntaje <=10
 		\end{ocl}
 
-	\item \begin{ocl}{No puede haber 2 viajes con el mismo taxista en el mismo momento}
+	\item \begin{ocl}{No puede haber 2 viajes con el mismo taxista en el mismo momento.}
 		  context ...
 		  inv: ...
 		\end{ocl}
 
-	\item \begin{ocl}{Puntaje promedio de un taxista es el promedio de los puntajes de todos sus viajes}
+	\item \begin{ocl}{Puntaje promedio de un taxista es el promedio de los puntajes de todos sus viajes.}
 		  context ...
 		  inv: ...
 		\end{ocl}
-\end{itemize}
+
+	\item \begin{ocl}{Si la fecha de una Reserva es en el futuro, la cantidad de viajes asociados es cero.}
+		  context ...
+		  inv: ...
+		\end{ocl}
+
+	\item \begin{ocl}{Si una Reserva tiene un viaje(reserva consumada), el pasajero creador de la reserva debe ser el pasajero del viaje asociado a la reserva.}
+		  context ...
+		  inv: ...
+		\end{ocl}
+
+	\item \begin{ocl}{El domicilio de origen y destino de un viaje debe ser distinto.}
+		  context ...
+		  inv: ...
+		\end{ocl}
+
+	\item \begin{ocl}{La fecha comienzo de un viaje debe ser menor que la fecha fin.}
+		  context ...
+		  inv: ...
+		\end{ocl}
+
+	\item \begin{ocl}{No hay usuarios repetidos por clave \texttt{nombre de usuario}.}
+		  context ...
+		  inv: ...
+		\end{ocl}
+\end{enumerate}
