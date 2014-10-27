@@ -1,17 +1,21 @@
 \subsection{Casos de Uso}
 
+\subsubsection{Diagrama de Casos de Uso}
 \diagramav{diag-cu}
+
+\subsubsection{Fichas de los CU}
 
 \begin{usecase}
   \ucname{Registrandose en el Sistema}
   \ucpre{True}
-  \ucpost{El sistema registra al nuevo pasajero}
+  \ucpost{El pasajero queda registrado con una cuenta en el sistema}
   \ucactor{Pasajero}
 \end{usecase}
 \begin{usecasesteps}
-  \ucstep{El pasajero ingresa sus datos(ver modelo conceptual).}{}
-  \ucstep{El sistema verifica que los datos sean validos y almacena al nuevo pasajero.}
-        {\ucalt{Si los datos son invalidos, el mostrar el mensaje de error correspondiente y volver a 1.}}
+  \ucstep{El pasajero ingresa sus datos(Ver modelo conceptual).}{}
+  \ucstep{El sistema verifica que los datos ingresados sean validos.}{}
+  \ucstep{Los datos son validos. El Sistema muestra la pantalla de logueo.}
+        {\ucalt{Los datos no son validos, el sistema muestra el mensaje de error correspondiente. Ir a 1.}}
   \ucstep{Puede ser extendido por \texttt{CU Logueandose en el sistema}}{}
   \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
@@ -24,196 +28,142 @@
 \end{usecase}
 \begin{usecasesteps}
   \ucstep{El pasajero ingresa su nombre de pasajero y contraseña.}{}
-  \ucstep{El sistema verifica que los datos sean validos y otorga el acceso.}
-        {\ucalt{Si los datos son invalidos, el mostrar el mensaje de datos incorrectos y volver a 1.}}
-  \ucstep{Puede ser extendido por \texttt{CU Reservando un viaje} y \texttt{CU Solicitando viaje}}{}
+  \ucstep{El sistema verifica que los datos sean validos.}{}
+  \ucstep{Los datos son validos. El sistema muestra la pantalla principal.}
+        {\ucalt{Los datos son invalidos, el sistema mostrar el mensaje de datos incorrectos. Ir a 1.}}
   \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
 
 \begin{usecase}
   \ucname{Solicitando un viaje}
-  \ucpre{.}
-  \ucpost{.}
+  \ucpre{El pasajero esta logueado al sistema}
+  \ucpost{Queda un nuevo viaje en estado pendiente(Ver modelo conceptual)}
   \ucactor{Pasajero}
 \end{usecase}
 \begin{usecasesteps}
-  \ucstep{.}
-        {\ucalt{.}}
-  \ucstep{Puede ser extendido por \texttt{CU} y \texttt{CU}}{}
+  \ucstep{El pasajero solicita un viaje ingresando una direccion origen, una direccion destino, y un horario.}{}
+  \ucstep{Los datos ingresados son correctos. El sistema computa una lista de taxistas apropiados y disponibles y la muestra en pantalla.}
+        {\ucalt{El sistema no encuentra ningun taxista disponible y apropiado, el sistema muestra el error en pantalla. Ir a fin CU.
+        Los datos ingresados no son validos, el sistema muestra un mensaje informando el error. Ir a 1.}}
+  \ucstep{El pasajero selecciona un taxista de la lista(\texttt{CU Eligiendo Taxista y Taxi}).}{}
+  \ucstep{El taxista acepta el viaje. El sistema crea un nuevo viaje pendiente(Ver modelo conceptual)}{\ucalt{El taxista no acepta el viaje, el sistema asigna al siguiente taxista en orden de prioridad(distancia y calificacion). En caso de ser asignado otro taxista, ir al siguiente paso. Caso contrario, no se puede encontrar un taxista para el viaje, el sistema muestra el error en pantalla. Ir a Fin CU.}}
+  \ucstep{Puede ser extendido por el \texttt{CU Cancelando Viaje} y \texttt{CU Consultando posicion del taxi}}{}
   \ucstep{Incluye al \texttt{CU Eligiendo Taxista y Taxi}}{}
   \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
 
 \begin{usecase}
   \ucname{Reservando un viaje}
-  \ucpre{}
-  \ucpost{}
+  \ucpre{El pasajero esta logueado al sistema}
+  \ucpost{Queda una nueva reserva asentada en el sistema, con un viaje pendiente asociado en estado pendiente(Ver modelo conceptual)}
   \ucactor{Pasajero}
 \end{usecase}
 \begin{usecasesteps}
-  \ucstep{}
-        {\ucalt{}}
-  \ucstep{Puede ser extendido por \texttt{CU} y \texttt{CU}}{}
+  \ucstep{El pasajero solicita una reserva por un viaje ingresando los datos requeridos(Ver descripcion del sistema) y selecciona un taxista de la lista(\texttt{CU Eligiendo Taxista y Taxi}) que sera tenido en cuenta como preferencia principal para el viaje.}{}
+  \ucstep{Los datos ingresados son validos. El sistema asenta una reserva con un viaje asociado, teniendo en cuenta la preferencia del taxista en el viaje.}{\ucalt{Los datos ingresados no son validos. El sistema informa esto en pantalla mostrando un mensaje. Ir a 1.}}
+  \ucstep{El sistema pregunta al pasajero si desea pagar con el sistema automatizado de pago electronico(SAPE) o pagara el viaje en efectivo al finalizar el mismo.}{}
+  \ucstep{El pasajero selecciona pago en efectivo al finalizar el viaje. Ir a Fin CU. Si el pasajero selecciona pagar con SAPE, ir al paso siguiente.}{}
+  \ucstep{Usar \texttt{CU Debitando Saldo}}{}
+  \ucstep{Puede ser extendido por el \texttt{CU Debitando saldo}}{}
   \ucstep{Incluye al \texttt{CU Eligiendo Taxista y Taxi}}{}
   \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
+\textbf{Nota adicional: }\texttt{ Notar que aunque el viaje asociado a la reserva tenga a este taxista, puede cambiar posteriormente al momento de efectuarse el viaje debido a disponibilidad del taxista.}
 
 \begin{usecase}
   \ucname{Eligiendo Taxista y taxi}
-  \ucpre{}
-  \ucpost{}
+  \ucpre{El pasajero esta logueado al sistema}
+  \ucpost{El pasajero elige taxista y taxi}
   \ucactor{Pasajero}
 \end{usecase}
 \begin{usecasesteps}
-  \ucstep{}
-        {\ucalt{}}
-  \ucstep{Puede ser extendido por \texttt{CU} y \texttt{CU}}{}
+  \ucstep{El pasajero selecciona un taxista y taxi de la lista provista por el sistema}{}
   \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
 
 \begin{usecase}
   \ucname{Cancelando Viaje}
-  \ucpre{}
-  \ucpost{}
+  \ucpre{El pasajero esta logueado y existe un viaje pendiente a su nombre}
+  \ucpost{El viaje es cancelado}
+  \ucactor{Pasajero, Taxista}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El pasajero ingresa al menu de viajes pendientes y solicita cancelacion del viaje en cuestion.}{}
+  \ucstep{El sistema marca el viaje como cancelado e informa al taxista asociado de ser necesario.}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Cancelando Reserva}
+  \ucpre{El pasajero esta logueado y existe una reserva pendiente a su nombre}
+  \ucpost{La reserva y el viaje asociado a la misma, son cancelados}
   \ucactor{Pasajero}
 \end{usecase}
 \begin{usecasesteps}
-  \ucstep{}
-        {\ucalt{}}
-  \ucstep{Puede ser extendido por \texttt{CU} y \texttt{CU}}{}
+  \ucstep{El pasajero ingresa al menu de reservas pendientes y solicita cancelacion de la reserva en cuestion.}{}
+  \ucstep{El sistema marca el viaje asociado a la reserva como cancelado.}{}
   \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
 
 \begin{usecase}
   \ucname{Calificando al taxista}
-  \ucpre{}
-  \ucpost{}
+  \ucpre{El Pasajero realizo un viaje y aun no califico al taxista de dicho viaje $\land$ el pasajero esta logueado al sistema}
+  \ucpost{La calificacion es asociada al viaje de dicho taxista y esto impacta en la calificacion del taxista}
   \ucactor{Pasajero}
 \end{usecase}
 \begin{usecasesteps}
-  \ucstep{}
-        {\ucalt{}}
-  \ucstep{Puede ser extendido por \texttt{CU} y \texttt{CU}}{}
+  \ucstep{El pasajero ingresa al menu de viajes, selecciona el viaje sin puntuar y asigna una calificacion en el rango $[0..10]$ al taxista con el que realizo el viaje.}{}
+  \ucstep{El sistema valida la calificacion ingresada.}{}
+  \ucstep{La calificacion es valida, el sistema asigna la calificacion y marca el viaje como puntuado, quitandolo de la lista de viajes sin puntuar.}{\ucalt{La calificacion no es valida, el sistema muestra mensaje de error en pantalla. Ir a 1.}}
   \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
 
 \begin{usecase}
   \ucname{Consultando posicion del taxi}
-  \ucpre{}
-  \ucpost{}
+  \ucpre{El pasajero esta logueado $\land$ el pasajero tiene un viaje pendiente}
+  \ucpost{El pasajero conoce posicion del taxi}
   \ucactor{Pasajero}
 \end{usecase}
 \begin{usecasesteps}
-  \ucstep{}
-        {\ucalt{}}
-  \ucstep{Puede ser extendido por \texttt{CU} y \texttt{CU}}{}
+  \ucstep{El pasajero ingresa al menu de viajes y solicita conocer la posicion del taxi asignado a su viaje pendiente}{}
+  \ucstep{El sistema informa en un mapa en pantalla la posicion del taxi asignado al viaje y da un estimado de tiempo restante.}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Debitando Saldo}
+  \ucpre{El pasajero esta logueado y en un contexto de pago de reserva}
+  \ucpost{El sistema debita el saldo de la cuenta del pasajero}
+  \ucactor{Sistema automatizado de pago electronico(SAPE), Pasajero}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El pasajero ingresa los datos de su cuenta para que el sistema (usando SAPE) pueda debitar el pago.}{}
+  \ucstep{El sistema valida los datos con el sistema SAPE y verifica que haya saldo suficiente en la cuenta. }{}
+  \ucstep{El sistema SAPE confirma que los datos son validos y hay saldo en la cuenta. El sistema procede a debitar el saldo enviando la orden al sistema SAPE.}{\ucalt{El sistema SAPE informa que los datos no son validos, el sistema informa en pantalla del error. Ir a 1.}}
+  \ucstep{El sistema SAPE informa al sistema que la transaccion fue correcta. El sistema muestra en pantalla que la operacion fue satisfactoria.}{\ucalt{El sistema SAPE informa que hubo un error, o hubo un error de conectividad entre el sistema y el sistema SAPE. El sistema muestra el error en pantalla. Ir a 1.}}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\textbf{Nota:} Los \texttt{CU Personificando al Pasajero} y \texttt{Personificando al taxista} se refieren a la interaccion de la operadora cuando no hay internet para realizar todos los casos de uso pertenecientes a \texttt{Pasajero} y \texttt{Taxista}.
+
+\begin{usecase}
+  \ucname{Actualizando Posicion de Taxista}
+  \ucpre{La operadora esta logueada}
+  \ucpost{El sistema tiene una posicion actualizada del Taxista}
+  \ucactor{Operadora}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{La operadora vuelca en el sistema una posicion informada por radio por algun taxista}{}
   \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
 
 \begin{usecase}
   \ucname{Reportando cambio de posicion de taxi}
-  \ucpre{True}
-  \ucpost{El sistema conoce la ubicacion del taxi}
+  \ucpre{-}
+  \ucpost{El sistema tiene una posicion actualizada del taxi}
   \ucactor{Sistema de localizacion GPS}
 \end{usecase}
 \begin{usecasesteps}
-  \ucstep{El Sistema de localizacion GPS reporta la ubicacion del taxi al sistema.}{}
-  \ucstep{Fin caso de uso.}{}
-\end{usecasesteps}
-
-
-\begin{usecase}
-  \ucname{Reportando un viaje finalizado}
-  \ucpre{}
-  \ucpost{}
-  \ucactor{Pasajero}
-\end{usecase}
-\begin{usecasesteps}
-  \ucstep{}
-        {\ucalt{}}
-  \ucstep{Fin caso de uso.}{}
-\end{usecasesteps}
-
-\begin{usecase}
-  \ucname{Reportando un viaje en progreso}
-  \ucpre{}
-  \ucpost{}
-  \ucactor{Pasajero}
-\end{usecase}
-\begin{usecasesteps}
-  \ucstep{}
-        {\ucalt{}}
-  \ucstep{Fin caso de uso.}{}
-\end{usecasesteps}
-
-\begin{usecase}
-  \ucname{Rechazando un viaje}
-  \ucpre{El sistema le ofrecio el viaje al taxista}
-  \ucpost{El viaje no es asignado a este taxista}
-  \ucactor{Taxista}
-\end{usecase}
-\begin{usecasesteps}
-  \ucstep{El sistema le ofrece un viaje a un taxista.}{}
-  \ucstep{El taxista rechaza el viaje.}{}
-  \ucstep{Fin caso de uso.}{}
-\end{usecasesteps}
-
-\begin{usecase}
-  \ucname{Reportando el pago de un viaje}
-  \ucpre{}
-  \ucpost{}
-  \ucactor{Pasajero}
-\end{usecase}
-\begin{usecasesteps}
-  \ucstep{}
-        {\ucalt{}}
-  \ucstep{Fin caso de uso.}{}
-\end{usecasesteps}
-
-\begin{usecase}
-  \ucname{Consultando calificaciones de taxistas}
-  \ucpre{}
-  \ucpost{}
-  \ucactor{Directivo}
-\end{usecase}
-\begin{usecasesteps}
-  \ucstep{}
-        {\ucalt{}}
-  \ucstep{Fin caso de uso.}{}
-\end{usecasesteps}
-
-\begin{usecase}
-  \ucname{Consultando Facturacion}
-  \ucpre{}
-  \ucpost{}
-  \ucactor{Directivo}
-\end{usecase}
-\begin{usecasesteps}
-  \ucstep{}
-        {\ucalt{}}
-  \ucstep{Fin caso de uso.}{}
-\end{usecasesteps}
-
-\begin{usecase}
-  \ucname{Consultando viajes realizados}
-  \ucpre{}
-  \ucpost{}
-  \ucactor{Directivo}
-\end{usecase}
-\begin{usecasesteps}
-  \ucstep{}
-        {\ucalt{}}
-  \ucstep{Fin caso de uso.}{}
-\end{usecasesteps}
-
-\begin{usecase}
-  \ucname{Informando resultado debito}
-  \ucpre{}
-  \ucpost{}
-  \ucactor{Sistema automatizado de pago electronico(SAPE)}
-\end{usecase}
-\begin{usecasesteps}
-  \ucstep{}
-        {\ucalt{}}
+  \ucstep{El sistema de GPS informa al sistema una posicion actualizada del taxi}{}
   \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}

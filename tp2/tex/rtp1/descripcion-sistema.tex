@@ -17,10 +17,11 @@ TecnoTaxi es un sistema para facilitar la coordinación de los viajes entre los 
 	\item Cancelar un viaje pendiente.
 	\item Calificar un viaje finalizado si no fue calificado previamente.
 	\item Crear reserva periódica de viajes.
+	\item Cancelar una reserva pendiente.
 	\end{enumerate}
 	En el primer caso, en la misma pantalla se desplegará un menú con los taxistas recomendados por el sistema al usuario. Los taxistas que se mostrarán serán filtrados por puntuación general, puntuación personalizada, distancia, disponibilidad para la realización del viaje. Una vez seleccionado el taxista, TecnoTaxi tratará de asignarle a este el viaje, en caso fallido asignará otro de los taxistas por orden de prioridad según los criterios que se consideren relevantes (como la puntuación y la distancia). Una vez asignado el taxista, el viaje pasará a estar en estado pendiente.
 	El usuario podrá cancelar cualquier viaje que se encuentre en estado pendiente. También una vez que se haya finalizado el viaje, podrá puntuar al taxista con el que lo realizó.
-	Como indica el punto 4, el usuario también podrá programar viajes periódicamente estableciendo un patrón y la frecuencia con la que se quiere que este se repita. De la misma manera, podrá seleccionar un taxista preferido para la reserva, pero eso no es garantía de que el seleccionado sea el encargado de realizar el viaje. El usuario podrá abonar este servicio a través de un sistema de débito automático, o de la manera tradicional al finalizar cada uno de los viajes.
+	Como indica el punto 4, el usuario también podrá programar viajes periódicamente estableciendo un patrón y la frecuencia con la que se quiere que este se repita. De la misma manera, podrá seleccionar un taxista preferido para la reserva, pero eso no es garantía de que el seleccionado sea el encargado de realizar el viaje. El usuario podrá abonar este servicio a través de un sistema de débito automático, o de la manera tradicional al finalizar cada uno de los viajes. Por ultimo, de la misma forma en la que puede cancelar un viaje, puede cancelar una reserva
 
 \subsection{Descripcion General del Sistema: Taxistas}
 	\subsubsection{Utilización del sistema por parte de los taxistas}
