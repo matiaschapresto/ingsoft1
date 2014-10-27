@@ -22,37 +22,38 @@
 		\end{ocl}
 
 	\item \begin{ocl}{No puede haber 2 viajes con el mismo taxista en el mismo momento.}
-		  context ...
-		  inv: ...
+		  context Viaje
+		  inv: self.allInstances() -> not(exists(v1, v2 | v1.fechaComienzo == v2.fechaComienzo 
+		                                            and v1.Taxista == v2.Taxista))
 		\end{ocl}
 
-	\item \begin{ocl}{Puntaje promedio de un taxista es el promedio de los puntajes de todos sus viajes.}
-		  context ...
-		  inv: ...
+	\item \begin{ocl}{Puntaje promedio de un taxista es el promedio de los puntajes de todos sus viajes puntuados.}
+		  context Taxista
+		  inv: self.PuntajePromedio == self.Viajes -> PuntajePromedio()
 		\end{ocl}
 
 	\item \begin{ocl}{Si la fecha de una Reserva es en el futuro, la cantidad de viajes asociados es cero.}
-		  context ...
-		  inv: ...
+		  context Reserva
+		  inv: self.fechaReserva > fechaActual implies self.ViajeAsociado -> size() == 0
 		\end{ocl}
 
-	\item \begin{ocl}{Si una Reserva tiene un viaje(reserva consumada), el pasajero creador de la reserva debe ser el pasajero del viaje asociado a la reserva.}
-		  context ...
-		  inv: ...
+	\item \begin{ocl}{Si una Reserva tiene un viaje (reserva consumada), el pasajero creador de la reserva debe ser el pasajero del viaje asociado a la reserva.}
+		  context Reserva
+		  inv: self.ViajeAsociado.Pasajero == self.creador
 		\end{ocl}
 
 	\item \begin{ocl}{El domicilio de origen y destino de un viaje debe ser distinto.}
-		  context ...
-		  inv: ...
+		  context Viaje
+		  inv: not(self.DomicilioOrigen == self.DomicilioDestino)
 		\end{ocl}
 
 	\item \begin{ocl}{La fecha comienzo de un viaje debe ser menor que la fecha fin.}
-		  context ...
-		  inv: ...
+		  context Viaje
+		  inv: self.FechaComienzo < self.FechaFinal
 		\end{ocl}
 
 	\item \begin{ocl}{No hay usuarios repetidos por clave \texttt{nombre de usuario}.}
-		  context ...
-		  inv: ...
+		  context Persona
+		  inv: self.AllInstances() -> not(exist(p1, p2 | p1.NombreUsuario == p2.NombreUsuario))
 		\end{ocl}
 \end{enumerate}
