@@ -144,8 +144,6 @@
   \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
 
-\textbf{Nota:} Los \texttt{CU Personificando al Pasajero} y \texttt{Personificando al taxista} se refieren a la interaccion de la operadora cuando no hay internet para realizar todos los casos de uso pertenecientes a \texttt{Pasajero} y \texttt{Taxista}.
-
 \begin{usecase}
   \ucname{Actualizando Posicion de Taxista}
   \ucpre{La operadora esta logueada}
@@ -167,3 +165,133 @@
   \ucstep{El sistema de GPS informa al sistema una posicion actualizada del taxi}{}
   \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
+
+\textbf{Nota:} Los \texttt{CU Personificando al Pasajero} y \texttt{Personificando al Taxista} se refieren a la interaccion de la operadora cuando no hay internet(o el pasajero no utiliza la interfaz web) para realizar todos los casos de uso pertenecientes a \texttt{Pasajero}(via telefono) y \texttt{Taxista}(via radio).
+
+\begin{usecase}
+  \ucname{Personificando al Pasajero}
+  \ucpre{La operadora esta logueada}
+  \ucpost{El Pasajero, logra, por medio de la operadora realizar la accion requerida}
+  \ucactor{Operadora, Pasajero}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El pasajero quiere realizar una operacion y se comunica con la operadora por telefono}{}
+  \ucstep{La operadora le solicita los datos de acceso a su cuenta.}{}
+  \ucstep{El pasajero tiene cuenta, se la informa a la operadora. La operadora valida la identidad del pasajero.}{\ucalt{El pasajero no tiene cuenta. La operadora le solicita los datos y lo registra en el sistema. Ir al paso siguiente.}}
+  \ucstep{El pasajero le informa a la operadora que operacion quiere realizar y la operadora lo realiza en su nombre.}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Personificando al Taxista}
+  \ucpre{La operadora esta logueada}
+  \ucpost{El Taxista, logra, por medio de la operadora realizar la accion requerida}
+  \ucactor{Operadora, Taxista}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El taxista quiere realizar una operacion y se comunica con la operadora via radio}{}
+  \ucstep{El taxista le informa a la operadora que operacion quiere realizar y la operadora lo realiza en su nombre.}{}
+  \ucstep{Puede ser extendido por el \texttt{CU Actualizando Posicion de Taxista}.}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Rechazando un viaje}
+  \ucpre{El taxista esta logueado}
+  \ucpost{El viaje ofrecido al taxista no tiene asignado a este taxista}
+  \ucactor{Taxista}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El sistema le ofrece al taxista un viaje.}{}
+  \ucstep{El taxista lo rechaza desde su interfaz de tableta movil.}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Reportando un viaje finalizado}
+  \ucpre{El taxista esta logueado $\land$ el viaje en cuestion esta en estado en progreso(Ver FSM Ciclo de Vida Viaje)}
+  \ucpost{El viaje queda en estado finalizado}
+  \ucactor{Taxista}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El taxista marca un viaje como \texttt{Finalizado.} y reporta el pago \texttt{CU Reportando el pago de un viaje}}{}
+  \ucstep{El sistema asigna el estado de este viaje a finalizado.}{}
+  \ucstep{Fin caso de uso.}{}
+  \ucstep{Incluye al \texttt{CU Reportando el pago de un viaje}.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Reportando un viaje como \texttt{En Progreso}}
+  \ucpre{El taxista esta logueado $\land$ el viaje en cuestion esta en estado pendiente(Ver FSM Ciclo de Vida Viaje)}
+  \ucpost{El viaje queda en estado en progreso}
+  \ucactor{Taxista}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El taxista marca un viaje como \texttt{En progreso}.}{}
+  \ucstep{El sistema asigna el estado de este viaje a \texttt{En progreso}.}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Recibiendo un viaje}
+  \ucpre{El taxista esta logueado $\land$ el viaje en cuestion esta en estado pendiente(Ver FSM Ciclo de Vida Viaje)}
+  \ucpost{Dependiendo si el taxista acepta o no el viaje, es asignado o no a el mismo}
+  \ucactor{Taxista}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El sistema le ofrece al taxista un nuevo viaje en su interfaz de tableta.}{}
+  \ucstep{El taxista acepta el viaje. Ir al paso siguiente}{\ucalt{El taxista no acepta el viaje. El sistema intenta asignar el viaje a otro taxista. Ir a Fin CU}}
+  \ucstep{El sistema asigna el taxista de este viaje a el taxista en cuestion.}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Reportando el pago de un viaje}
+  \ucpre{El taxista esta logueado $\land$ el viaje en cuestion esta en estado en progreso(Ver FSM Ciclo de Vida Viaje)}
+  \ucpost{El sistema conoce el monto pagado por ese viaje}
+  \ucactor{Taxista}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El taxista ingresa el monto recibido al sistema.}{}
+  \ucstep{El sistema guarda el valor el taxista de este viaje a el taxista en cuestion.}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Consultando calificaciones de taxistas}
+  \ucpre{-}
+  \ucpost{El directivo conoce las calificaciones}
+  \ucactor{Directivo}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El directivo accede al menu de estadisticas y selecciona \texttt{Calificaciones de taxistas}.}{}
+  \ucstep{El sistema muestra en pantalla la informacion de calificaciones de taxistas.}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Consultando facturacion}
+  \ucpre{-}
+  \ucpost{El directivo conoce la facturacion}
+  \ucactor{Directivo}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El directivo accede al menu de estadisticas y selecciona \texttt{Facturacion}.}{}
+  \ucstep{El sistema muestra en pantalla la informacion de facturacion.}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Consultando viajes realizados}
+  \ucpre{-}
+  \ucpost{El directivo conoce la lista de viajes realizados}
+  \ucactor{Directivo}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El directivo accede al menu de estadisticas y selecciona \texttt{Viajes realizados}.}{}
+  \ucstep{El sistema muestra en pantalla la informacion de Viajes realizados.}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+
+\textbf{EL DIRECTIVO SE REGISTRA Y SE LOGUEA? OPERADORA PERSONIFICA DIRECTIVO?Tienen una web intranet aparte los directivos? O es publico en la web el sitio de estadisticas?}
