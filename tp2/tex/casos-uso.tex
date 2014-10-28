@@ -46,7 +46,7 @@
         {\ucalt{El sistema no encuentra ningun taxista disponible y apropiado, el sistema muestra el error en pantalla. Ir a fin CU.
         Los datos ingresados no son validos, el sistema muestra un mensaje informando el error. Ir a 1.}}
   \ucstep{El pasajero selecciona un taxista de la lista(\texttt{CU Eligiendo Taxista y Taxi}).}{}
-  \ucstep{El taxista acepta el viaje. El sistema crea un nuevo viaje pendiente(Ver modelo conceptual)}{\ucalt{El taxista no acepta el viaje, el sistema asigna al siguiente taxista en orden de prioridad(distancia y calificacion). En caso de ser asignado otro taxista, ir al siguiente paso. Caso contrario, no se puede encontrar un taxista para el viaje, el sistema muestra el error en pantalla. Ir a Fin CU.}}
+  \ucstep{El taxista acepta el viaje. El sistema crea un nuevo viaje pendiente(Ver modelo conceptual) y notifica al Pasajero con un mensaje.}{\ucalt{El taxista no acepta el viaje, el sistema asigna al siguiente taxista en orden de prioridad(distancia y calificacion). En caso de ser asignado otro taxista, ir al siguiente paso. Caso contrario, no se puede encontrar un taxista para el viaje, el sistema muestra el error en pantalla. Ir a Fin CU.}}
   \ucstep{Puede ser extendido por el \texttt{CU Cancelando Viaje} y \texttt{CU Consultando posicion del taxi}}{}
   \ucstep{Incluye al \texttt{CU Eligiendo Taxista y Taxi}}{}
   \ucstep{Fin caso de uso.}{}
@@ -60,7 +60,7 @@
 \end{usecase}
 \begin{usecasesteps}
   \ucstep{El pasajero solicita una reserva por un viaje ingresando los datos requeridos(Ver descripcion del sistema) y selecciona un taxista de la lista(\texttt{CU Eligiendo Taxista y Taxi}) que sera tenido en cuenta como preferencia principal para el viaje.}{}
-  \ucstep{Los datos ingresados son validos. El sistema asenta una reserva con un viaje asociado, teniendo en cuenta la preferencia del taxista en el viaje.}{\ucalt{Los datos ingresados no son validos. El sistema informa esto en pantalla mostrando un mensaje. Ir a 1.}}
+  \ucstep{Los datos ingresados son validos. El sistema asenta una reserva con un viaje asociado, teniendo en cuenta la preferencia del taxista en el viaje y notifica al Pasajero con un mensaje.}{\ucalt{Los datos ingresados no son validos. El sistema informa esto en pantalla mostrando un mensaje. Ir a 1.}}
   \ucstep{El sistema pregunta al pasajero si desea pagar con el sistema automatizado de pago electronico(SAPE) o pagara el viaje en efectivo al finalizar el mismo.}{}
   \ucstep{El pasajero selecciona pago en efectivo al finalizar el viaje. Ir a Fin CU. Si el pasajero selecciona pagar con SAPE, ir al paso siguiente.}{}
   \ucstep{Usar \texttt{CU Debitando Saldo}}{}
@@ -264,7 +264,7 @@
   \ucactor{Directivo}
 \end{usecase}
 \begin{usecasesteps}
-  \ucstep{El directivo accede al menu de estadisticas y selecciona \texttt{Calificaciones de taxistas}.}{}
+  \ucstep{El directivo accede en la intranet del sistema, al menu de estadisticas y selecciona \texttt{Calificaciones de taxistas}.}{}
   \ucstep{El sistema muestra en pantalla la informacion de calificaciones de taxistas.}{}
   \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
@@ -276,7 +276,7 @@
   \ucactor{Directivo}
 \end{usecase}
 \begin{usecasesteps}
-  \ucstep{El directivo accede al menu de estadisticas y selecciona \texttt{Facturacion}.}{}
+  \ucstep{El directivo accede en la intranet de estadisticas, al menu de estadisticas y selecciona \texttt{Facturacion}.}{}
   \ucstep{El sistema muestra en pantalla la informacion de facturacion.}{}
   \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
@@ -288,10 +288,7 @@
   \ucactor{Directivo}
 \end{usecase}
 \begin{usecasesteps}
-  \ucstep{El directivo accede al menu de estadisticas y selecciona \texttt{Viajes realizados}.}{}
+  \ucstep{El directivo accede en la intranet del sistema, al menu de estadisticas y selecciona \texttt{Viajes realizados}.}{}
   \ucstep{El sistema muestra en pantalla la informacion de Viajes realizados.}{}
   \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
-
-
-\textbf{EL DIRECTIVO SE REGISTRA Y SE LOGUEA? OPERADORA PERSONIFICA DIRECTIVO?Tienen una web intranet aparte los directivos? O es publico en la web el sitio de estadisticas?}
