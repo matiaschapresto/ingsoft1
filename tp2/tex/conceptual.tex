@@ -28,12 +28,6 @@
 		\end{ocl}
 		\textbf{Hay que poner que no se intersecten las ventanas del viaje (fechafinal y fechacomienzo)}
 
-	\item \begin{ocl}{Puntaje promedio de un taxista es el promedio de los puntajes de todos sus viajes puntuados.}
-		  context Taxista
-		  inv: self.PuntajePromedio == self.Viajes -> PuntajePromedio()
-		\end{ocl}
-		\textbf{Hay que hacerlo con las funciones matematicas de ocl}
-
 	\item \begin{ocl}{Si una Reserva tiene un viaje, el pasajero creador de la reserva debe ser el pasajero del viaje asociado a la reserva.}
 		  context Reserva
 		  inv: self.ViajeAsociado.Pasajero == self.creador
@@ -58,4 +52,17 @@
 		  context Persona
 		  inv: self.AllInstances() -> not(exist(p1, p2 | p1.NombreUsuario == p2.NombreUsuario))
 		\end{ocl}
+
+	\item \begin{ocl}{Puntaje promedio de un taxista es el promedio de los puntajes de todos sus viajes puntuados.}
+		  context Taxista
+		  inv: self.PuntajePromedio == self.Viajes -> PuntajePromedio()
+		\end{ocl}
+		\textbf{Hay que hacerlo con las funciones matematicas de ocl}
+
+	\item \begin{ocl}{Puntaje promedio de un taxista es el promedio de los puntajes de todos sus viajes puntuados.}
+		  context Taxista
+		  inv: self.PuntajePromedio == self.Viajes -> PuntajePromedio()
+		\end{ocl}
+		\textbf{Hay que hacerlo con las funciones matematicas de ocl}
+
 \end{enumerate}
