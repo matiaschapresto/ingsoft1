@@ -26,20 +26,22 @@
 		  inv: self.allInstances() -> not(exists(v1, v2 | v1.fechaComienzo == v2.fechaComienzo 
 		                                            and v1.Taxista == v2.Taxista))
 		\end{ocl}
+		\textbf{Hay que poner que no se intersecten las ventanas del viaje (fechafinal y fechacomienzo)}
 
 	\item \begin{ocl}{Puntaje promedio de un taxista es el promedio de los puntajes de todos sus viajes puntuados.}
 		  context Taxista
 		  inv: self.PuntajePromedio == self.Viajes -> PuntajePromedio()
 		\end{ocl}
+		\textbf{Hay que hacerlo con las funciones matematicas de ocl}
 
-	\item \begin{ocl}{Si la fecha de una Reserva es en el futuro, la cantidad de viajes asociados es cero.}
-		  context Reserva
-		  inv: self.fechaReserva > fechaActual implies self.ViajeAsociado -> size() == 0
-		\end{ocl}
-
-	\item \begin{ocl}{Si una Reserva tiene un viaje (reserva consumada), el pasajero creador de la reserva debe ser el pasajero del viaje asociado a la reserva.}
+	\item \begin{ocl}{Si una Reserva tiene un viaje, el pasajero creador de la reserva debe ser el pasajero del viaje asociado a la reserva.}
 		  context Reserva
 		  inv: self.ViajeAsociado.Pasajero == self.creador
+		\end{ocl}
+
+	\item \begin{ocl}{Si una Reserva es en el futuro, el viaje asociado debe estar en estado pendiente.}
+		  context Reserva
+		  inv: 
 		\end{ocl}
 
 	\item \begin{ocl}{El domicilio de origen y destino de un viaje debe ser distinto.}
