@@ -51,17 +51,37 @@
 	\item \begin{ocl}{No hay usuarios repetidos por clave \texttt{nombre de usuario}.}
 		  context Persona
 		  inv: self.AllInstances() -> not(exist(p1, p2 | p1.NombreUsuario == p2.NombreUsuario))
+		\end{ocl}	
+
+	\item \begin{ocl}{Los viajes que tiene una clase Facturacion, corresponden a ese dia(fecha facturacion, con fechafin viaje(pensar que se paga al finalizar viaje)).}
+		  context 
+		  inv: 
 		\end{ocl}
 
-	\item \begin{ocl}{Puntaje promedio de un taxista es el promedio de los puntajes de todos sus viajes puntuados.}
-		  context Taxista
-		  inv: self.PuntajePromedio == self.Viajes -> PuntajePromedio()
+	\item \begin{ocl}{El montofacturado de una clase Facturacion corresponde a la suma de todos los viajes que tiene la clase.}
+		  context 
+		  inv: 
 		\end{ocl}
 		\textbf{Hay que hacerlo con las funciones matematicas de ocl}
 
-	\item \begin{ocl}{Puntaje promedio de un taxista es el promedio de los puntajes de todos sus viajes puntuados.}
-		  context Taxista
-		  inv: self.PuntajePromedio == self.Viajes -> PuntajePromedio()
+	\item \begin{ocl}{Los viajes tienen una clase facturacion asociada, debe corresponder la fecha(fecha fin del viaje con fecha del dia de facturacion, los viajes que empiezan 23.59 de un dia y terminan al dia siguiente no son problema porque asumimos que matchean fecha facturacion, con fechafin viaje(pensar que se paga al finalizar viaje)).}
+		  context 
+		  inv: 
+		\end{ocl}
+
+	\item \begin{ocl}{Ojo que aca(a diferencia de facturacion) tomamos como match la fecha inicio de un viaje con la fecha del historial de viajes(un dia tiene un viaje si comenzo en ese dia, sin importar cuando termine, makes sense, no?). Hay que oclear que matcheen las fechas de inicio de los viajes que tiene historial con la fecha del historial.}
+		  context 
+		  inv: 
+		\end{ocl}
+
+	\item \begin{ocl}{La fecha del historial de viajes que tiene un viaje, debe coincidir con la fecha de inicio del viaje.}
+		  context 
+		  inv: 
+		\end{ocl}
+
+	\item \begin{ocl}{La calificacion asociada a un taxista, debe contener el puntaje promedio que corresponde al promedio de puntaje de los viajes de dicho taxista.}
+		  context 
+		  inv: 
 		\end{ocl}
 		\textbf{Hay que hacerlo con las funciones matematicas de ocl}
 
