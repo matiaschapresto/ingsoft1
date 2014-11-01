@@ -23,10 +23,12 @@
 
 	\item \begin{ocl}{No puede haber 2 viajes con el mismo taxista en el mismo momento.}
 		  context Viaje
-		  inv: self.allInstances() -> not(exists(v1, v2 | v1.fechaComienzo == v2.fechaComienzo 
-		                                            and v1.Taxista == v2.Taxista))
+		  inv: self.allInstances() -> not(exists(v1, v2 | 
+		     (v2.fechaFinal >= v1.fechaComienzo and v2.fechaFinal <= v1.fechaFinal) or 
+		     (v2.fechaComienzo >= v1.fechaComienzo and v2.fechaComienzo <= v1.fechaFinal)
+		     and v1.Taxista == v2.Taxista))
 		\end{ocl}
-		\textbf{Hay que poner que no se intersecten las ventanas del viaje (fechafinal y fechacomienzo)}
+		\textbf{En palabras: No pueden existir dos viajes v1 y v2 con el mismo taxista y con la fecha de comienzo o de final de alguno de ellos incluida en el rango de lo q duró el viaje del otro.}
 
 	\item \begin{ocl}{Si una Reserva tiene un viaje, el pasajero creador de la reserva debe ser el pasajero del viaje asociado a la reserva.}
 		  context Reserva
