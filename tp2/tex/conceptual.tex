@@ -15,7 +15,7 @@
 		       self.puntajePromedio <=10
 		\end{ocl}
 	
-	\item \begin{ocl}{Puntaje del viaje entre 0 y 10.}
+	\item \begin{ocl}{Puntaje del viaje entre 0 y 10. o null}
 		  context Viaje
 		  inv: self.puntaje >=0 and
 		       self.puntaje <=10
@@ -81,7 +81,7 @@
 		  inv: 
 		\end{ocl}
 
-	\item \begin{ocl}{La calificacion asociada a un taxista, debe contener el puntaje promedio que corresponde al promedio de puntaje de los viajes de dicho taxista.}
+	\item \begin{ocl}{La calificacion asociada a un taxista, debe contener el puntaje promedio que corresponde al promedio de puntaje de los viajes de dicho taxista(OJO que hay viajes con calificacion null).}
 		  context 
 		  inv: 
 		\end{ocl}

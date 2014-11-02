@@ -9,7 +9,7 @@ informe.pdf: $(ARCHIVOS)
 	$(LATEX) informe.tex
 	$(LATEX) informe.tex
 	#okular informe.pdf
-	evince informe.pdf
+	evince informe.pdf &
 clean: 
 	@echo "Cleaning informe"	
 	- rm -f *.loginforme

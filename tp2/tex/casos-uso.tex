@@ -46,7 +46,7 @@
         {\ucalt{El sistema no encuentra ningun taxista disponible y apropiado, el sistema muestra el error en pantalla. Ir a fin CU.
         Los datos ingresados no son validos, el sistema muestra un mensaje informando el error. Ir a 1.}}
   \ucstep{El pasajero selecciona un taxista de la lista(\texttt{CU Eligiendo Taxista y Taxi}).}{}
-  \ucstep{El taxista acepta el viaje. El sistema crea un nuevo viaje pendiente(Ver modelo conceptual) y notifica al Pasajero con un mensaje.}{\ucalt{El taxista no acepta el viaje, el sistema asigna al siguiente taxista en orden de prioridad(distancia y calificacion). En caso de ser asignado otro taxista, ir al siguiente paso. Caso contrario, no se puede encontrar un taxista para el viaje, el sistema muestra el error en pantalla. Ir a Fin CU.}}
+  \ucstep{El taxista elegido no rechaza el viaje. El sistema crea un nuevo viaje pendiente(Ver modelo conceptual) y notifica al Pasajero con un mensaje.}{\ucalt{El taxista elegido rechaza el viaje, el sistema asigna al siguiente taxista en orden de prioridad(distancia y calificacion). En caso de ser asignado otro taxista, ir al siguiente paso. Caso contrario, no se puede encontrar un taxista para el viaje, el sistema muestra el error en pantalla. Ir a Fin CU.}}
   \ucstep{Puede ser extendido por el \texttt{CU Cancelando Viaje} y \texttt{CU Consultando posicion del taxi}}{}
   \ucstep{Incluye al \texttt{CU Eligiendo Taxista y Taxi}}{}
   \ucstep{Fin caso de uso.}{}
@@ -302,3 +302,27 @@
   \ucstep{Fin caso de uso.}{}
 \end{usecasesteps}
 \texttt{Contribuye al requerimiento \ref{req:R9}}{}
+
+\begin{usecase}
+  \ucname{Cambiando su estado}
+  \ucpre{El taxista esta logueado}
+  \ucpost{El estado del taxista queda modificado de acuerdo a lo solicitado.}
+  \ucactor{Taxista}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El taxista solicita un cambio de estado al sistema(Ver Modelo conceptual, EstadoTaxista).}{}
+  \ucstep{El sistema cambia el estado del taxista de acuerdo al nuevo estado solicitado.}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
+
+\begin{usecase}
+  \ucname{Cancelando viaje asignado (Taxista)}
+  \ucpre{El taxista esta logueado $\land$ tiene un viaje asignado con estado pendiente}
+  \ucpost{El viaje asignado al taxista se desliga de este taxista y el pasajero es notificado}
+  \ucactor{Taxista, Pasajero}
+\end{usecase}
+\begin{usecasesteps}
+  \ucstep{El taxista selecciona un viaje pendiente y solicita cancelarlo.}{}
+  \ucstep{El sistema refleja este cambio y notifica al Pasajero.}{}
+  \ucstep{Fin caso de uso.}{}
+\end{usecasesteps}
