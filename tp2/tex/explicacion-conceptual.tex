@@ -1,0 +1,24 @@
+\subsubsection{Clases}
+\begin{itemize}
+	\item \textbf{Persona:} Modela un individuo, que luego en el sistema, seran efectivamente, \texttt{Pasajero} y \texttt{Empleados}. Fueron seleccionados los atributos de un invidivio que consideramos de relevancia para el sistema(Datos personales y de cuenta.).
+	\item \textbf{Empleado:} Esta clase modela abstractamente 3 subtipos de \texttt{Empleado}: \texttt{Taxista}, \texttt{Directivo} y \texttt{Operadora}.
+	\item \textbf{Directivo:} Modela un gerente de TecnoTaxi, que accedera al sistema para consultar estadisticas.
+	\item \textbf{Pasajero:} Modela un individuo capaz de tener \texttt{Reservas} y \texttt{Viajes} asociados.
+	\item \textbf{Operadora:} Modela el rol del empleado que tiene como responsabilidad personificar al \texttt{Taxista} y al \texttt{Pasajero}, en los casos donde sea necesario un intermediario con el sistema. Por ejemplo, cuando el taxista no tiene conectividad y utiliza la radio, o cuando un \texttt{Pasajero} se comunica telefonicamente (ya sea por falta de conectividad o por preferencia de atencion telefonica.)
+	\item \textbf{Taxista:} Representa un empleado de la empresa, que tiene a su cargo la conduccion de un \texttt{Taxi}, posee \texttt{Viajes} y \texttt{Reservas} asociados y posee una \texttt{Calificacion} promedio calculada de las calificaciones de sus viajes.
+	\item \textbf{Taxi:} Modela el vehiculo conducido por un \texttt{Taxista}. Particularmente contiene el modelo del auto y la patente.
+	\item \textbf{Viaje:} Modela cada viaje, con sus respectivas propiedades. Particularmente, \texttt{Estado Viaje:} Se corresponde con su ciclo de vida(Ver \ref{section:ciclovidaviaje}.).
+	En un viaje participan un \texttt{Taxista} y un \texttt{Pasajero}.Luego de realizado el viaje, se establece un \texttt{Costo}, y puede asignarse una \texttt{Calificacion}.
+	\item \textbf{Reserva:} Modela una reserva de \texttt{Viaje}, realizada con antelacion por un \texttt{Pasajero}, con un \texttt{Taxista} de preferencia.
+	\item \textbf{Estadistica:} Modela abstractamente clases de distintos tipos de estadisticas recolectados por el sistema.
+	\item \textbf{Facturacion:} Es un tipo de estadistica, que muestra, por dia, el total facturado.
+	\item \textbf{Historial de viajes:} Es un tipo de estadistica, que muestra, por dia, la cantidad de viajes realizados.
+	\item \textbf{Calificacion:} Almacena por motivos de calculo de estadisticas la calificacion promedio de los \texttt{Viajes} del \texttt{Taxista} asociado.
+\end{itemize}
+
+\subsubsection{Tipos enumerados}
+\begin{itemize}
+	\item \textbf{MedioPago:} Modela los medios de pago disponibles para abonar los servicios provistos.
+	\item \textbf{EstadoTaxista:} Indica la disponibilidad del taxista para tomar viajes(Ver \ref{section:utilizaciontaxista} \texttt{Marcarse como no disponible}).
+	\item \textbf{EstadoViaje: Indica los posibles estados por los cuales pasa un viaje durante su ciclo de vida. (Ver \ref{section:ciclovidaviaje}.)}
+\end{itemize}
