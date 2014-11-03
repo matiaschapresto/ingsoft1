@@ -1,7 +1,38 @@
 \subsection{Maquinas de Estado}
 
-\subsubsection{Ciclo de vida de un viaje}
-\label{section:ciclovidaviaje}
-\diagramav{FSM-viaje}
+En TecnoTaxi constantemente se reciben solicitudes de viajes para realizar en el momento a 
+través del sistema web. Simultáneamente, los taxistas se encuentran circulando por la ciudad 
+en diferentes ubicaciones realizando viajes. Para modelar esta interacción compleja 
+elegimos la herramienta de \textit{Finite State Machines}.
+\\
+A continuación, ilustramos cómo son las máquinas que representan a los pasajeros y a los 
+taxistas. La composición en paralelo de estas máquinas de estado -que por simplicidad no 
+formularemos en el presente trabajo- describe cómo interactúan pasajeros y taxistas a la 
+hora de realizarse un viaje.
+
+\vspace*{0.5cm}
+\\Aclaraciones respecto de la notación utilizada:
+\begin{itemize}
+\item Escribimos sólo una máquina para los pasajeros, con subíndice i para para denotar a 
+cada pasajero en particular.
+\item Análogamente, escribimos sólo una máquina para los taxistas, con subíndice j para para 
+denotar a cada taxista en particular.
+\item Para las acciones que se repiten por cada pasajero (o por cada taxista), sólo se escriben explícitamente la correspondiente al primer y al último pasajero (o taxista), notando con tres puntos suspensivos entre estas dos.
+\end{itemize}
+\vspace{0.5cm}
+Observaciones:
+\begin{itemize}
+\item No se ha modelado cómo internamente el sistema TecnoTaxi calcula la lista de taxistas (se tomó esta decisión porque se considera que escapa al alcance del tp), se asume que tiene en cuenta las distancias además de la disponibilidad de los taxistas y la preferencia de los pasajeros. La transición VerListaTaxistasPosibles refleja solamente qué posibilidades tiene el usuario de elegir un taxista. Por otro lado, la transición de \textit{ElegirTaxista\_x!} tiene expresado -con cierto abuso de notación- la condición de que el taxista elegido \textit{x} esté en esa lista provista por el sistema.
+\item La transición que llamamos \textit{ViajeAceptado\_j!} corresponde a un timeout puesto por el sistema. No se corresponde con ningún caso de uso porque no constituye una acción explícita  del taxista. Aquí permite modelar el cambio de estado en el pasajero, dado que a partir de ese timeout, el sistema le notifica que su solicitud ha sido aceptada, y a partir de ese momento el pasajero podrá cancelar dicho viaje mientras espera el arribo del taxi.
+\item Por otro lado, la transición \textit{ViajeRechazado\_j!} sí se corresponde con el Caso de Uso del taxista \textit{Rechazando un viaje}.
+\end{itemize}
+
 \subsubsection{Solicitud de un viaje - Interacci\'on pasajero y taxista}
 \diagramav{fsm_viaje}
+
+
+
+
+\subsubsection{Ciclo de vida de un viaje}
+\diagramav{FSM-viaje}
+
