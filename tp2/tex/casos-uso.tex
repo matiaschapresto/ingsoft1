@@ -220,10 +220,10 @@
   \ucactor{Taxista}
 \end{usecase}
 \begin{usecasesteps}
-  \ucstep{El taxista marca un viaje como \texttt{Finalizado.} y reporta el pago \texttt{CU Reportando el pago de un viaje}}{}
+  \ucstep{El taxista marca un viaje como \texttt{Finalizado.}}{}
   \ucstep{El sistema asigna el estado de este viaje a finalizado.}{}
+  \ucstep{Si el pasajero paga en efectivo, extiende el \texttt{CU Reportando el pago de un viaje}}{}
   \ucstep{Fin caso de uso.}{}
-  \ucstep{Incluye al \texttt{CU Reportando el pago de un viaje}.}{}
 \end{usecasesteps}
 
 \begin{usecase}
