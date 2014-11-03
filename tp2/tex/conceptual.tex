@@ -37,7 +37,7 @@
 
 	\item \begin{ocl}{Si una Reserva es en el futuro, el viaje asociado debe estar en estado pendiente.}
 		  context Reserva
-		  inv: self.FechaReserva >= today()
+		  inv: self.FechaReserva >= today() implies self.ViajeAsociado.EstadoViaje == Pendiente
 		\end{ocl}
 
 	\item \begin{ocl}{El domicilio de origen y destino de un viaje debe ser distinto.}
@@ -47,7 +47,8 @@
 
 	\item \begin{ocl}{La fecha comienzo de un viaje debe ser menor que la fecha fin.}
 		  context Viaje
-		  inv: self.FechaComienzo < self.FechaFinal
+		  inv: self.EstadoViaje == Finalizado implies 
+		  self.FechaComienzo < self.FechaFinal
 		\end{ocl}
 
 	\item \begin{ocl}{No hay usuarios repetidos por clave \texttt{nombre de usuario}.}
