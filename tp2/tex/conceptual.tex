@@ -37,7 +37,7 @@
 
 	\item \begin{ocl}{Si una Reserva es en el futuro, el viaje asociado debe estar en estado pendiente.}
 		  context Reserva
-		  inv: 
+		  inv: self.FechaReserva >= today()
 		\end{ocl}
 
 	\item \begin{ocl}{El domicilio de origen y destino de un viaje debe ser distinto.}
@@ -55,36 +55,36 @@
 		  inv: self.AllInstances() -> not(exist(p1, p2 | p1.NombreUsuario == p2.NombreUsuario))
 		\end{ocl}	
 
-	\item \begin{ocl}{Los viajes que tiene una clase Facturacion, corresponden a ese dia(fecha facturacion, con fechafin viaje(pensar que se paga al finalizar viaje)).}
-		  context 
-		  inv: 
+	\item \begin{ocl}{La fecha de la planilla de facturaci\'on diaria a la que pertenece cada viaje coincide con la fecha del final del viaje.}
+		  context Viaje
+		  inv: self.FacturacionDelDia.Dia == self.FechaFinal
 		\end{ocl}
 
-	\item \begin{ocl}{El montofacturado de una clase Facturacion corresponde a la suma de todos los viajes que tiene la clase.}
-		  context 
-		  inv: 
+	\item \begin{ocl}{El monto facturado de una clase Facturacion corresponde a la suma de todos los viajes que tiene la clase.}
+		  context Viaje
+		  inv: self.FacturacionDelDia.MontoFacturado == self.AllInstances()
+		  ->select(p|p.fechaFinal == self.fechaFinal AND p.Costo <> 0)->collect(Costo)->sum()
 		\end{ocl}
-		\textbf{Hay que hacerlo con las funciones matematicas de ocl}
-
-	\item \begin{ocl}{Los viajes tienen una clase facturacion asociada, debe corresponder la fecha(fecha fin del viaje con fecha del dia de facturacion, los viajes que empiezan 23.59 de un dia y terminan al dia siguiente no son problema porque asumimos que matchean fecha facturacion, con fechafin viaje(pensar que se paga al finalizar viaje)).}
-		  context 
-		  inv: 
-		\end{ocl}
-
-	\item \begin{ocl}{Ojo que aca(a diferencia de facturacion) tomamos como match la fecha inicio de un viaje con la fecha del historial de viajes(un dia tiene un viaje si comenzo en ese dia, sin importar cuando termine, makes sense, no?). Hay que oclear que matcheen las fechas de inicio de los viajes que tiene historial con la fecha del historial.}
-		  context 
-		  inv: 
-		\end{ocl}
+		
 
 	\item \begin{ocl}{La fecha del historial de viajes que tiene un viaje, debe coincidir con la fecha de inicio del viaje.}
-		  context 
-		  inv: 
+		  context Viaje
+		  inv: self.Historial.Dia == self.FechaComienzo
 		\end{ocl}
 
-	\item \begin{ocl}{La calificacion asociada a un taxista, debe contener el puntaje promedio que corresponde al promedio de puntaje de los viajes de dicho taxista(OJO que hay viajes con calificacion null).}
-		  context 
-		  inv: 
+			\item \begin{ocl}{La suma del historial de viajes que tiene un viaje, debe coincidir con la cantidad de viajes de esa fecha.}
+		  context Viaje
+		  inv: self.Historial.cantViajes == self.AllInstances()
+		  ->select(p|p.fechaComienzo == self.fechaComienzo)->count()
 		\end{ocl}
-		\textbf{Hay que hacerlo con las funciones matematicas de ocl}
+
+
+	\item \begin{ocl}{La calificacion asociada a un taxista, debe contener el puntaje promedio que corresponde al promedio de puntaje de los viajes ya calificados de dicho taxista}
+		  context Taxista
+		  inv: let viajesPuntuados : Set(Viaje) = self.Viajes->select(v|v.puntaje <> 0) in
+		  self.Calificacion.PuntajePromedio == 
+		  viajesPuntuados->collect(Puntaje)->sum().div(viajesPuntuados->count())
+		\end{ocl}
+		
 
 \end{enumerate}
