@@ -1,0 +1,217 @@
+\documentclass[a4paper, 10pt, twoside]{article}
+
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-ucroman, es-noquoting]{babel}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{enumitem} % Provee macro \setlist
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage[toc, page]{appendix}
+\usepackage{color}
+
+%%%%%%%%%% Configuración de Fancyhdr - Inicio %%%%%%%%%%
+\pagestyle{fancy}
+\thispagestyle{fancy}
+\lhead{Recuperatorio Trabajo Práctico 1 · Ingeniería de Software I}
+\rhead{Vileriño · Chapresto · Garassino · Sarri\'es · Barbeito}
+\renewcommand{\footrulewidth}{0.4pt}
+\cfoot{\thepage /\pageref{LastPage}}
+
+\fancypagestyle{caratula} {
+   \fancyhf{}
+   \cfoot{\thepage /\pageref{LastPage}}
+   \renewcommand{\headrulewidth}{0pt}
+   \renewcommand{\footrulewidth}{0pt}
+}
+%%%%%%%%%% Configuración de Fancyhdr - Fin %%%%%%%%%%
+
+
+%%%%%%%%%% Miscelánea - Inicio %%%%%%%%%%
+% Evita que el documento se estire verticalmente para ocupar el espacio vacío
+% en cada página.
+\raggedbottom
+
+% Deshabilita sangría en la primer línea de un párrafo.
+\setlength{\parindent}{0em}
+
+% Separación entre párrafos.
+\setlength{\parskip}{0.5em}
+
+% Separación entre elementos de listas.
+\setlist{itemsep=0.5em}
+
+% Asigna la traducción de la palabra 'Appendices'.
+\renewcommand{\appendixtocname}{Apéndices}
+\renewcommand{\appendixpagename}{Apéndices}
+%%%%%%%%%% Miscelánea - Fin %%%%%%%%%%
+
+
+%%%%%%%%%% Insertar diagrama - Inicio %%%%%%%%%%
+\newcommand{\diagramav}[1]{%
+  \includegraphics[type=pdf,ext=.pdf,read=.pdf,width=16cm]{diagramas/#1}%
+}
+
+\newcommand{\diagramavtrim}[2]{%
+  \includegraphics[type=pdf,ext=.pdf,read=.pdf,width=16cm,trim=0 #2 0 0,clip]{diagramas/#1}%
+}
+
+\newcommand{\diagramah}[1]{%
+  \includegraphics[type=pdf,ext=.pdf,read=.pdf,height=16cm,angle=90]{diagramas/#1}%
+}
+%%%%%%%%%% Insertar diagrama - Fin %%%%%%%%%%
+
+
+%%%%%%%%%% Macros para Casos de Uso - Inicio %%%%%%%%%%
+\newcounter{usecasecounter}
+\newcounter{usecasealtcounter}
+\newcounter{nroCU}
+\setcounter{nroCU}{0}
+
+\newcommand{\ucname}[1]{\renewcommand{\givenucname}{#1}}
+\newcommand{\ucpre}[1]{\renewcommand{\givenucpre}{#1}}
+\newcommand{\ucpost}[1]{\renewcommand{\givenucpost}{#1}}
+\newcommand{\ucactor}[1]{\renewcommand{\givenucactor}{#1}}
+\newcommand{\givenucname}{REQUIRED!}
+\newcommand{\givenucpre}{REQUIRED!}
+\newcommand{\givenucpost}{REQUIRED!}
+\newcommand{\givenucactor}{REQUIRED!}
+
+\newenvironment{usecase}
+  {}{
+    \stepcounter{nroCU}
+    \textbf{Caso de uso \arabic{nroCU}: }\givenucname \\
+    \textbf{Pre: }\givenucpre \\
+    \textbf{Post: }\givenucpost \\
+    \textbf{Actores: }\givenucactor
+  }
+
+\newenvironment{usecasesteps}
+  {
+    \setcounter{usecasecounter}{0}
+    \setcounter{usecasealtcounter}{0}
+
+    \tabularx{\textwidth}{|l|X|}
+    \hline
+    Curso normal & Curso alternativo \\
+    \hline
+    \hline
+  }{
+    \endtabularx
+    \vspace{\parskip}
+  }
+
+\newcommand{\ucstep}[2]{
+  \stepcounter{usecasecounter}%
+  \parbox[t]{7.5cm}{
+    \makebox[2ex][l]{\arabic{usecasecounter}.}
+    #1\phantom{p}
+  }
+  &
+  \parbox[t]{7.5cm}{
+    \setcounter{usecasealtcounter}{0}
+    #2\phantom{p}
+  } \\
+  \hline
+}
+
+\newcommand{\ucalt}[1]{
+  \stepcounter{usecasealtcounter}
+  \makebox[4ex][l]{\arabic{usecasecounter}.\arabic{usecasealtcounter}.}
+  #1
+}
+%%%%%%%%%% Macros para Casos de Uso - Fin %%%%%%%%%%
+
+
+%%%%%%%%%% Macro para OCL - Inicio %%%%%%%%%%%%
+\newenvironment{ocl}[1]
+  {
+    \textbf{#1}
+    \verbatim
+  }{
+    \endverbatim
+  }
+%%%%%%%%%% Macro para OCL - Fin %%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Carátula                                                                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{caratula}
+
+\begin{center}
+
+\includegraphics[height=2cm]{img/DC.png} 
+\hfill
+\includegraphics[height=2cm]{img/UBA.jpg} 
+
+\vspace{2cm}
+
+Departamento de Computación,\\
+Facultad de Ciencias Exactas y Naturales,\\
+Universidad de Buenos Aires
+
+\vspace{4cm}
+
+\begin{Huge}
+Recuperatorio Trabajo Práctico 1
+\end{Huge}
+
+\vspace{0.5cm}
+
+\begin{Large}
+Ingeniería de Software I
+\end{Large}
+
+\vspace{1cm}
+
+Segundo Cuatrimestre de 2014
+
+\vspace{4cm}
+
+\begin{tabular}{|c|c|c|}
+\hline
+Apellido y Nombre & LU & E-mail\\
+\hline
+Barbeito, Nicolás	 		& 147/10 & nicolasbarbeiton@gmail.com\\
+Chapresto, Mat\'ias 		& 201/12 & matiaschapresto@gmail.com\\
+Garassino, Agust\'in Javier & 394/12 & ajgarassino@gmail.com\\
+Sarriés, Ana 				& 144/02 & anasarries@yahoo.com.ar\\
+Vileriño, Silvio 			& 106/12 & svilerino@gmail.com\\
+\hline
+\end{tabular}
+
+\end{center}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Índice                                                                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Introducción                                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{intro}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Desarrollo                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\include{desarrollo}
+
+\end{document}
