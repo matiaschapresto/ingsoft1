@@ -1,8 +1,31 @@
 \section{Introducción}
 
 Este trabajo presenta las correcciones hechas sobre el modelo de objetivos de la primer entrega. Se ha procurado incorporar más capas de negocio, y cubrir todos los requerimientos que se desprenden del enunciado original y de las sucesivas consultas a nuestro corrector (stakeholder).
+\par
+Como se podrá apreciar en el \emph{Modelo de Objetivos}, documentado en la sección de \textbf{Diagramas del Modelo de Objetivos}, partimos del objetivo de alto nivel \emph{Automatización del Despacho de Taxis}. Inmediatamente, tenemos una capa de negocios con dos objetivos que contribuyen a su logro (constituye un y-ref): \emph{Accesibilidad de los directivos a la supervisión de TecnoTaxi} y \emph{Gestionar viajes atendiendo a la satisfacción de los usuarios}. La primera engloba la necesidad planteada por parte de los directivos de poder monitorear el rendimiento de la empresa a partir de esta modernización que han decidido encarar. La segunda engloba la tarea compleja de coordinación de pasajeros y taxistas.
+\par
+Hemos considerado la completitud, consitencia y minimalidad de todos los y-refinamientos planteados. También tuvimos en cuenta la realizabilidad de un objetivo por parte de un agente al asignar responsabilidades.
+\par
+En cualquier modelo de objetivos, tenemos aserciones descriptivas y prescriptivas. Respecto de estas últimas, hemos elaborado un listado con todas las que constituyen requerimientos de nuestro sistema TecnoTaxi (ver sección \textbf{Lista de Requerimientos}).
+\par
+En la última sección \textbf{Observaciones}, especificamos algunos detalles de interés respecto de la información volcada en los diagramas.
+
+
+\section{Diagramas del Modelo de Objetivos}
+\label{sec:diagramas}
+\includepdf[pages={1}, pagecommand=\subsection{Automatización del despacho de taxis}, scale=1]{Objetivos-nuevo-modificado}
+\includepdf[pages={2}, pagecommand=\subsection{Accesibilidad de los directivos a la supervisión de TecnoTaxi}, scale=1]{Objetivos-nuevo-modificado}
+\includepdf[pages={3}, pagecommand=\subsection{Usuarios satisfechos del servicio ofrecido - Elección taxista}, scale=1]{Objetivos-nuevo-modificado}
+\includepdf[pages={4}, pagecommand=\subsection{Gestión de viajes espontáneos}, scale=1]{Objetivos-nuevo-modificado}
+\includepdf[pages={5}, pagecommand=\subsection{Gestión de viajes espontáneos - Pago del Viaje}, scale=1]{Objetivos-nuevo-modificado}
+\includepdf[pages={6}, pagecommand=\subsection{Gestión de viajes de rutina}, scale=1]{Objetivos-nuevo-modificado}
+\includepdf[pages={7}, pagecommand=\subsection{Gestión de viajes de rutina - Pago anticipado}, scale=1]{Objetivos-nuevo-modificado}
+\includepdf[pages={8}, pagecommand=\subsection{Gestión de viajes de rutina - Pago en efectivo}, scale=1]{Objetivos-nuevo-modificado}
+\includepdf[pages={9}, pagecommand=\subsection{Usuarios satisfechos del servicio ofrecido - Cancelación de viaje}, scale=1]{Objetivos-nuevo-modificado}
+\includepdf[pages={10}, pagecommand=\subsection{Usuarios satisfechos del servicio ofrecido - Cancelación de Viaje - Aviso al taxista}, scale=1]{Objetivos-nuevo-modificado}
 
 \section{Lista de Requerimientos}
+\label{sec:req}
 	\begin{description}
 		\item [\namedlabel{req:R1}{R1}]. Usuario puede saber donde está el taxista.		
 		\item [\namedlabel{req:R2}{R2}]. Usuario puede calificar a los taxistas.		
@@ -43,24 +66,11 @@ Este trabajo presenta las correcciones hechas sobre el modelo de objetivos de la
 		\item [\namedlabel{req:R37}{R37}.] Usuario puede cancelar viajes que no comenzaron.
 		\item [\namedlabel{req:R38}{R38}.] Comunicar al taxista de la cancelación por intenet.
 		\item [\namedlabel{req:R39}{R39}.] Comunicar al taxista de cancelación por radio.
-
-		
-	\end{description}
 	
-
-\section{Diagramas del Modelo de Objetivos}
-\includepdf[pages={1}, pagecommand=\subsection{Automatización del despacho de taxis}, scale=1]{Objetivos-nuevo-modificado}
-\includepdf[pages={2}, pagecommand=\subsection{Accesibilidad de los directivos a la supervisión de TecnoTaxi}, scale=1]{Objetivos-nuevo-modificado}
-\includepdf[pages={3}, pagecommand=\subsection{Usuarios satisfechos del servicio ofrecido - Elección taxista}, scale=1]{Objetivos-nuevo-modificado}
-\includepdf[pages={4}, pagecommand=\subsection{Gestión de viajes espontáneos}, scale=1]{Objetivos-nuevo-modificado}
-\includepdf[pages={5}, pagecommand=\subsection{Gestión de viajes espontáneos - Pago del Viaje}, scale=1]{Objetivos-nuevo-modificado}
-\includepdf[pages={6}, pagecommand=\subsection{Gestión de viajes de rutina}, scale=1]{Objetivos-nuevo-modificado}
-\includepdf[pages={7}, pagecommand=\subsection{Gestión de viajes de rutina - Pago anticipado}, scale=1]{Objetivos-nuevo-modificado}
-\includepdf[pages={8}, pagecommand=\subsection{Gestión de viajes de rutina - Pago en efectivo}, scale=1]{Objetivos-nuevo-modificado}
-\includepdf[pages={9}, pagecommand=\subsection{Usuarios satisfechos del servicio ofrecido - Cancelación de viaje}, scale=1]{Objetivos-nuevo-modificado}
-\includepdf[pages={10}, pagecommand=\subsection{Usuarios satisfechos del servicio ofrecido - Cancelación de Viaje - Aviso al taxista}, scale=1]{Objetivos-nuevo-modificado}
+	\end{description}
 
 \section{Observaciones}
+\label{sec:obs}
 \begin{itemize}
 
 \item En esta versión final del diagrama de objetivos, el requerimiento 3 enunciado en el TP2, se encuentra representado en el \textbf{\ref{req:R15}}.
