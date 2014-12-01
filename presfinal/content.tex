@@ -1,0 +1,72 @@
+% DO NOT COMPILE THIS FILE DIRECTLY!
+% This is included by the other .tex files.
+
+\begin{frame}[t,plain]
+\titlepage
+\end{frame}
+
+\watermarkoff
+
+\section{\textsc{TecnoTaxi: nuestro trabajo}}
+
+
+\begin{frame}
+\frametitle{\textsc{Dificultades}}
+\begin{itemize}
+\item Metodológicas
+\begin{itemize}
+\item La definición de adecuadas capas de negocio durante la etapa de elicitación (\emph{modelo de ojetivos})
+\item La necesidad de incluir o-refinamientos aunque en la práctica tendíamos a omitirlos (\emph{modelo de ojetivos})
+\end{itemize}
+\item De diseño
+\end{itemize}
+\end{frame}
+
+\note[itemize]{
+\item En general el modelo de objetivos nos planteó dificultades. Nos costó acostumbrarnos a la idea de plasmar las decisiones tomadas, las alternativas evaluadas en el modelo. Traíamos la tendencia a decidir un modelo a implementar y no documentar alternativas. Aprendimos que el modelado de alternativas es útil, por ejemplo al plantear objetivos blandos, emerge una forma de documentar porqué preferimos una alternativa a la otra.
+}
+
+\begin{frame}
+\frametitle{\textsc{Puntos Fuertes}}
+
+\begin{itemize}
+\item La gestión de la información estadística ha sido delegada a un software especializado a tales fines. 
+\item La posibilidad del pasajero de acceder a los beneficios de un pago electrónico al tratarse de viajes de rutina.
+\end{itemize}
+\end{frame}
+
+\note[itemize]{
+\item El requerimiento por parte de los directivos de TecnoTaxi, de monitorear el funcionamiento ha sido un punto clave que hemos tenido en cuenta. Tal cual lo refleja nuestro \emph{modelo de objetivos} donde aparece como uno de los dos objetivos principales de alto nivel. Se puede mejorar a futuro respecto de qué tipos de estadísticas recoge, y brinda el sistema. En principio, nos quedamos con las más importantes q saltaron en los requerimientos: ganancias, viajes realizados, calificaciones al personal(taxistas).
+\item SAPE
+}
+
+
+\begin{frame}
+\frametitle{\textsc{Puntos Cuestionables}}
+\begin{itemize}
+\item La \emph{personificación} de la operadora tanto de pasajeros como de taxistas.
+\item La orientación del modelado para que el taxista no elija rechazar un viaje.
+\end{itemize}
+\end{frame}
+
+\note[itemize]{
+\item La personificación conlleva una carga pesada para la operadora que se puede apreciar en el diagrama de contexto.
+Tal vez habría que haber considerado por separado un plan de contingencia en la iteracción con los taxis; otro con los pasajeros; y en un plano diferente también la alternativa de atender pasajeros que prefieren la interfaz telefónica: por ejemplo ofrecer un sistema automático que no requiera de una operadora.
+\item Se decidió \emph{direccionar} al taxista para que no elija si acepta o no un viaje, sino que tenga que rechazar explicítamente un viaje asignado. En la práctica, el taxista decide, pero hay un tiempo que tiene predefinido para optar por rechazar el viaje, luego del cual será tomado como un viaje pendiente.
+}
+
+
+\begin{frame}
+\frametitle{\textsc{Decisiones}}
+\begin{itemize}
+\item Modelar la asignación de viajes con FSM por las caracteristicas concurrentes de los actores: pasajeros y taxistas. \end{itemize}
+\end{frame}
+
+
+\note[itemize]{
+\item Ambos solicitan viajes y llevan a cabo viajes (respectivamente) y además hay un sistema de preferencias de taxista para cada usuario que se intenta respetar sujeto a la dinámica de peticiones y atención de esos viajes.
+}
+
+
+
+
