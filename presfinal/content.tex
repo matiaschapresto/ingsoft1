@@ -15,8 +15,8 @@
 \begin{itemize}
 \item Metodológicas
 \begin{itemize}
-\item La definición de adecuadas capas de negocio durante la etapa de elicitación (\emph{modelo de ojetivos})
-\item La necesidad de incluir o-refinamientos aunque en la práctica tendíamos a omitirlos (\emph{modelo de ojetivos})
+\item La definición de adecuadas capas de negocio durante la etapa de elicitación (\emph{modelo de objetivos})
+\item La necesidad de incluir o-refinamientos aunque en la práctica tendíamos a omitirlos (\emph{modelo de objetivos})
 \end{itemize}
 \item De diseño
 \end{itemize}
@@ -60,14 +60,13 @@ Tal vez habría que haber considerado por separado un plan de contingencia en la
 \begin{frame}
 \frametitle{\textsc{Decisiones}}
 \begin{itemize}
-\item Modelar la asignación de viajes con FSM por las caracteristicas concurrentes de los actores: pasajeros y taxistas. \end{itemize}
+\item Modelar la asignación de viajes con FSM por las caracteristicas concurrentes de los actores: pasajeros y taxistas.
+\item Personificacion total de la operadora sobre el pasajero y el taxista por medios de comunicacion redundantes para fortalecer la solidez del sistema.
+\item Modelar sistema estadistico en sistema externo para delegar tareas.
+\end{itemize}
 \end{frame}
 
 
 \note[itemize]{
 \item Ambos solicitan viajes y llevan a cabo viajes (respectivamente) y además hay un sistema de preferencias de taxista para cada usuario que se intenta respetar sujeto a la dinámica de peticiones y atención de esos viajes.
 }
-
-
-
-
