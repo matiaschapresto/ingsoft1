@@ -32,6 +32,8 @@
 \begin{itemize}
 \item La gestión de la información estadística ha sido delegada a un software especializado a tales fines. 
 \item La posibilidad del pasajero de acceder a los beneficios de un pago electrónico al tratarse de viajes de rutina.
+\item Funcionalidad total incluso ante la ca\'ida de Internet
+\item Soporte total para usuarios sin conectividad de red, o sin conocimientos de computaci\'on ni telefon\'ia celular
 \end{itemize}
 \end{frame}
 
@@ -40,12 +42,12 @@
 \item SAPE
 }
 
-
 \begin{frame}
 \frametitle{\textsc{Puntos Cuestionables}}
 \begin{itemize}
 \item La \emph{personificación} de la operadora tanto de pasajeros como de taxistas.
 \item La orientación del modelado para que el taxista no elija rechazar un viaje.
+\item Modelado prescinde en general de FSMs y del modelado del tiempo con temporizadores.
 \end{itemize}
 \end{frame}
 
@@ -54,7 +56,6 @@
 Tal vez habría que haber considerado por separado un plan de contingencia en la iteracción con los taxis; otro con los pasajeros; y en un plano diferente también la alternativa de atender pasajeros que prefieren la interfaz telefónica: por ejemplo ofrecer un sistema automático que no requiera de una operadora.
 \item Se decidió \emph{direccionar} al taxista para que no elija si acepta o no un viaje, sino que tenga que rechazar explicítamente un viaje asignado. En la práctica, el taxista decide, pero hay un tiempo que tiene predefinido para optar por rechazar el viaje, luego del cual será tomado como un viaje pendiente.
 }
-
 
 \begin{frame}
 \frametitle{\textsc{Decisiones}}
